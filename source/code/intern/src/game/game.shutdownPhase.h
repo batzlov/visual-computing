@@ -1,8 +1,10 @@
 #pragma once
 
-namespace Data 
+#include "game.phase.h"
+
+namespace Game 
 {
-    class ShutdownPhase
+    class ShutdownPhase : public Phase
     {
         public: 
             static ShutdownPhase& GetInstance()
@@ -17,9 +19,9 @@ namespace Data
         private: 
             ShutdownPhase() {};
 
-        public: 
-            void OnEnter();
-            void OnRun();
-            void OnLeave();
+        private: 
+            int InternOnEnter();
+            int InternOnRun();
+            int InternOnLeave();
     };
 }
