@@ -208,6 +208,7 @@
     <ClCompile Include="..\..\src\gui\gui.mainMenuPhase.cpp" />
     <ClCompile Include="..\..\src\gui\gui.playPhase.cpp" />
     <ClCompile Include="..\..\src\gui\gui.shutdownPhase.cpp" />
+    <ClCompile Include="..\..\src\gui\gui.startupPhase.cpp" />
     <ClCompile Include="..\..\src\gui\gui.unloadPhase.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -215,6 +216,7 @@
     <ClInclude Include="..\..\src\gui\gui.mainMenuPhase.h" />
     <ClInclude Include="..\..\src\gui\gui.playPhase.h" />
     <ClInclude Include="..\..\src\gui\gui.shutdownPhase.h" />
+    <ClInclude Include="..\..\src\gui\gui.startupPhase.h" />
     <ClInclude Include="..\..\src\gui\gui.unloadPhase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
