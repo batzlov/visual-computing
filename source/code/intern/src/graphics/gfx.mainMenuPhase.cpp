@@ -1,5 +1,6 @@
 #include <iostream>
 #include <SFML/Graphics/Text.hpp>
+#include <SFML/Graphics/Font.hpp>
 
 #include "gfx.mainMenuPhase.h"
 #include "game/game.application.h"
@@ -12,7 +13,10 @@ namespace Gfx
 
         Game::Application& app = Game::Application::GetInstance();
 
-        font.loadFromFile("amatic-sc-regular.ttf");
+        if (!font.loadFromFile("opensans.ttf")) 
+        {
+            std::cout << "Error loading font" << std::endl;
+        }
         // font.loadFromFile("X:\visual-computing\artists\fonts\amatic-sc-regular.ttf");
 
         introText.setFont(font);

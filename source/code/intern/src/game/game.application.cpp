@@ -98,9 +98,6 @@ namespace Game
 
     HandlePhaseChangeResult Application::HandlePhaseChange()
     {
-        std::cout << "Application::HandlePhaseChange()" << std::endl;
-        std::cout << "currentPhaseIndex: " << currentPhaseIndex << std::endl;
-
         Phase* currentPhase = phases[currentPhaseIndex];
         assert(currentPhase != nullptr);
         
