@@ -207,7 +207,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\game\game.application.cpp" />
+    <ClCompile Include="..\..\src\game\game.loadPhase.cpp" />
+    <ClCompile Include="..\..\src\game\game.mainMenuPhase.cpp" />
     <ClCompile Include="..\..\src\game\game.phase.cpp" />
+    <ClCompile Include="..\..\src\game\game.playPhase.cpp" />
+    <ClCompile Include="..\..\src\game\game.shutdownPhase.cpp" />
+    <ClCompile Include="..\..\src\game\game.startupPhase.cpp" />
+    <ClCompile Include="..\..\src\game\game.unloadPhase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\core\core.vcxproj">
@@ -228,7 +234,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\game\game.application.h" />
+    <ClInclude Include="..\..\src\game\game.loadPhase.h" />
+    <ClInclude Include="..\..\src\game\game.mainMenuPhase.h" />
     <ClInclude Include="..\..\src\game\game.phase.h" />
+    <ClInclude Include="..\..\src\game\game.playPhase.h" />
+    <ClInclude Include="..\..\src\game\game.shutdownPhase.h" />
+    <ClInclude Include="..\..\src\game\game.startupPhase.h" />
+    <ClInclude Include="..\..\src\game\game.unloadPhase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

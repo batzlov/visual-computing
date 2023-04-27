@@ -31,6 +31,8 @@ namespace Game
         Gui::UnloadPhase::GetInstance().OnRun();
 
         std::cout << "Game - UnloadPhase - InternOnRun - Done" << std::endl;
+
+        return 0;
     }
 
     int UnloadPhase::InternOnLeave() 
@@ -42,5 +44,7 @@ namespace Game
         Gui::UnloadPhase::GetInstance().OnLeave();
 
         std::cout << "Game - UnloadPhase - InternOnLeave - Done" << std::endl;
+
+        return 0;
     }
 }

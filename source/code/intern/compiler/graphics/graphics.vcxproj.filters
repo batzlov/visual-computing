@@ -30,6 +30,9 @@
     <ClCompile Include="..\..\src\graphics\gfx.unloadPhase.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\graphics\gfx.startupPhase.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\graphics\gfx.loadPhase.h">
@@ -45,6 +48,9 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\graphics\gfx.unloadPhase.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\graphics\gfx.startupPhase.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

@@ -204,11 +204,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\data\data.menuPhase.cpp" />
+    <ClCompile Include="..\..\src\data\data.loadPhase.cpp" />
+    <ClCompile Include="..\..\src\data\data.mainMenuPhase.cpp" />
     <ClCompile Include="..\..\src\data\data.shutdownPhase.cpp" />
     <ClCompile Include="..\..\src\data\data.startupPhase.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\data\data.loadPhase.h" />
+    <ClInclude Include="..\..\src\data\data.mainMenuPhase.h" />
     <ClInclude Include="..\..\src\data\data.menuPhase.h" />
     <ClInclude Include="..\..\src\data\data.shutdownPhase.h" />
     <ClInclude Include="..\..\src\data\data.startupPhase.h" />

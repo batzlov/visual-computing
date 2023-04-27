@@ -4,20 +4,20 @@
 
 namespace Game 
 {
-    class UnloadPhase : public Phase
+    class StartupPhase : public Phase
     {
         public: 
-            static UnloadPhase& GetInstance()
+            static StartupPhase& GetInstance()
             {
-                static UnloadPhase instance;
+                static StartupPhase instance;
                 return instance;
             };
             
-            UnloadPhase(const UnloadPhase&) = delete;
-            UnloadPhase& operator = (const UnloadPhase&) = delete;
+            StartupPhase(const StartupPhase&) = delete;
+            StartupPhase& operator = (const StartupPhase&) = delete;
 
         private: 
-            UnloadPhase() {};
+            StartupPhase() {};
 
         private: 
             int InternOnEnter();

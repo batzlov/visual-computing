@@ -34,6 +34,8 @@ namespace Game
         Gui::StartupPhase::GetInstance().OnRun();
 
         std::cout << "Game - StartupPhase - InternOnRun - Done" << std::endl;
+
+        return 0;
     }
 
     int StartupPhase::InternOnLeave() 
@@ -46,5 +48,7 @@ namespace Game
         Gui::StartupPhase::GetInstance().OnLeave();
 
         std::cout << "Game - StartupPhase - InternOnLeave - Done" << std::endl;
+        
+        return 0;
     }
 }

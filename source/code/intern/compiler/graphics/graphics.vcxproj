@@ -210,6 +210,7 @@
     <ClCompile Include="..\..\src\graphics\gfx.mainMenuPhase.cpp" />
     <ClCompile Include="..\..\src\graphics\gfx.playPhase.cpp" />
     <ClCompile Include="..\..\src\graphics\gfx.shutdownPhase.cpp" />
+    <ClCompile Include="..\..\src\graphics\gfx.startupPhase.cpp" />
     <ClCompile Include="..\..\src\graphics\gfx.unloadPhase.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -217,6 +218,7 @@
     <ClInclude Include="..\..\src\graphics\gfx.mainMenuPhase.h" />
     <ClInclude Include="..\..\src\graphics\gfx.playPhase.h" />
     <ClInclude Include="..\..\src\graphics\gfx.shutdownPhase.h" />
+    <ClInclude Include="..\..\src\graphics\gfx.startupPhase.h" />
     <ClInclude Include="..\..\src\graphics\gfx.unloadPhase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
