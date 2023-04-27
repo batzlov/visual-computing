@@ -13,7 +13,7 @@ namespace Gfx
 
         Game::Application& app = Game::Application::GetInstance();
 
-        if (!font.loadFromFile("opensans.ttf")) 
+        if (!font.loadFromFile("amatic-sc-regular.ttf")) 
         {
             std::cout << "Error loading font" << std::endl;
         }

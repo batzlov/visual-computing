@@ -148,7 +148,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <OutputFile>$(SolutionDir)..\build\win64\$(ProjectName)\$(Configuration)\$(TargetFileName)</OutputFile>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(SolutionDir)..\..\extern\sfml\lib\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib</AdditionalDependencies>
+      <AdditionalDependencies>sfml-window-d.lib;sfml-system-d.lib;sfml-graphics-d.lib;sfml-main-d.lib;</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy ..\..\build\win64\$(ProjectName)\$(Configuration)\*.exe ..\..\..\..\bin\</Command>
@@ -171,7 +171,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <OutputFile>$(SolutionDir)..\build\win64\$(ProjectName)\$(Configuration)\$(TargetFileName)</OutputFile>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(SolutionDir)..\..\extern\sfml\lib\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib</AdditionalDependencies>
+      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy ..\..\build\win64\$(ProjectName)\$(Configuration)\*.exe ..\..\..\..\bin\</Command>
