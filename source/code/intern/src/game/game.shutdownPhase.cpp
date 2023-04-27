@@ -30,7 +30,7 @@ namespace Game
         Gfx::ShutdownPhase::GetInstance().OnRun();
         Gui::ShutdownPhase::GetInstance().OnRun();
 
-        return 0;
+        return Type::Undefined;
     }
 
     int ShutdownPhase::InternOnLeave()

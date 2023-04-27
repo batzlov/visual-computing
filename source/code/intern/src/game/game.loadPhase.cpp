@@ -34,7 +34,7 @@ namespace Game
 
         std::cout << "Game - LoadPhase - InternOnRun - Done" << std::endl;
 
-        return 0;
+        return Type::PLAY;
     }
 
     int LoadPhase::InternOnLeave() 

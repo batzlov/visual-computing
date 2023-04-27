@@ -31,7 +31,7 @@ namespace Game
 
         std::cout << "Game - MainMenuPhase - InternOnRun - Done" << std::endl;
 
-        return 0;
+        return Type::MAIN_MENU;
     }
 
     int MainMenuPhase::InternOnLeave() 

@@ -35,7 +35,7 @@ namespace Game
 
         std::cout << "Game - StartupPhase - InternOnRun - Done" << std::endl;
 
-        return 0;
+        return Type::MAIN_MENU;
     }
 
     int StartupPhase::InternOnLeave() 

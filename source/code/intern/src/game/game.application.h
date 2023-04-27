@@ -4,6 +4,13 @@
 #include "game.phase.h"
 #include <SFML/Graphics/RenderWindow.hpp>
 
+enum HandlePhaseChangeResult
+{
+    PHASE_REMAINS,
+    PHASE_CHANGED,
+    GAME_LIFECYCLE_ENDED
+};
+
 namespace Game
 {
     class Application
@@ -20,6 +27,7 @@ namespace Game
 
         private:
             Application();
+            int currentPhaseIndex;
             Phase* phases [Phase::NumberOfTypes];
 
         public:
@@ -29,5 +37,9 @@ namespace Game
             void Startup();
             void Run();
             void Shutdown();
+
+        private:
+            void HandleEvent(sf::Event event);
+            HandlePhaseChangeResult HandlePhaseChange();
     };
 }

@@ -32,7 +32,7 @@ namespace Game
 
         std::cout << "Game - UnloadPhase - InternOnRun - Done" << std::endl;
 
-        return 0;
+        return Type::MAIN_MENU;
     }
 
     int UnloadPhase::InternOnLeave() 
