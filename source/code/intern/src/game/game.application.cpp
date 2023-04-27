@@ -30,36 +30,37 @@ namespace Game
 
         // create the window
         window.create(sf::VideoMode(800, 600), "Visual Computing - Robert Ackermann");
+
+        currentPhaseIndex = Phase::STARTUP;
+        Phase* currentPhase = phases[currentPhaseIndex];
+        assert(currentPhase != nullptr);
+        currentPhase->OnEnter();
     }
 
     void Application::Run()
     {
         std::cout << "Application::Run()" << std::endl;
 
-        // now we draw a simple green circle
-        sf::CircleShape shape(200.f);
-        shape.setFillColor(sf::Color::Green);
-
         // game loop
-        while (window.isOpen())
+        for (;;) 
         {
+            if (window.isOpen() == false) 
+            {
+                break;
+            }
+
             sf::Event event;
             while (window.pollEvent(event))
             {
                 HandleEvent(event);
             }
-                                        
-            window.clear();                            
-            window.draw(shape);
-            window.display();
 
             // exit if the lifecycle ended
-            if (HandlePhaseChange() == GAME_LIFECYCLE_ENDED) 
+            if (HandlePhaseChange() == GAME_LIFECYCLE_ENDED)
             {
                 break;
             }
         }
-
     }
 
     void Application::Shutdown()
@@ -97,6 +98,9 @@ namespace Game
 
     HandlePhaseChangeResult Application::HandlePhaseChange()
     {
+        std::cout << "Application::HandlePhaseChange()" << std::endl;
+        std::cout << "currentPhaseIndex: " << currentPhaseIndex << std::endl;
+
         Phase* currentPhase = phases[currentPhaseIndex];
         assert(currentPhase != nullptr);
         
