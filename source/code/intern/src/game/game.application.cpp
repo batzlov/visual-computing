@@ -29,7 +29,7 @@ namespace Game
         std::cout << "Application::Startup()" << std::endl;
 
         // create the window
-        window.create(sf::VideoMode(800, 600), "Visual Computing - Robert Ackermann");
+        window.create(sf::VideoMode(1600, 1200), "Visual Computing - Robert Ackermann");
 
         currentPhaseIndex = Phase::STARTUP;
         Phase* currentPhase = phases[currentPhaseIndex];
@@ -80,7 +80,7 @@ namespace Game
             break;
             case sf::Event::KeyPressed:
             {
-                std::cout << "key pressed, key code: " << event.key.code << std::endl;
+                // std::cout << "key pressed, key code: " << event.key.code << std::endl;
             }
             break;
             case sf::Event::Closed: 

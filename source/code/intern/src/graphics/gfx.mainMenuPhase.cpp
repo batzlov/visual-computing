@@ -19,7 +19,9 @@ namespace Gfx
 
         // apply textures to sprites
         screens[Gui::SelectedMenuLabel::PLAY].setTexture(textures[Gui::SelectedMenuLabel::PLAY]);
+        screens[Gui::SelectedMenuLabel::PLAY].setScale(2, 2);
         screens[Gui::SelectedMenuLabel::EXIT].setTexture(textures[Gui::SelectedMenuLabel::EXIT]);
+        screens[Gui::SelectedMenuLabel::EXIT].setScale(2, 2);
     }
 
     void MainMenuPhase::Render() 

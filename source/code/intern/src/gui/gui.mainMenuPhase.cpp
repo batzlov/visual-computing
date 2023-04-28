@@ -13,7 +13,6 @@ namespace Gui
 
     int MainMenuPhase::OnRun() 
     {
-        // TODO: if the down key is pressed, selectedMenuLabel should be set to EXIT, when up is pressed it should be set to PLAY
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) 
         {
             selectedMenuLabel = SelectedMenuLabel::PLAY;
@@ -26,7 +25,7 @@ namespace Gui
         {
             return 1;
         }
-        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && selectedMenuLabel == SelectedMenuLabel::EXIT) 
+        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && selectedMenuLabel == SelectedMenuLabel::EXIT) 
         {
             return -1;
         }
