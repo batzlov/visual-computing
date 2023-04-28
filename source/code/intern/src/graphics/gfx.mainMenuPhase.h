@@ -2,6 +2,10 @@
 
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/Text.hpp>
+#include <SFML/Graphics/Sprite.hpp>
+#include <SFML/Graphics/Texture.hpp>
+
+#include "gui/gui.mainMenuPhase.h"
 
 namespace Gfx 
 {
@@ -26,8 +30,8 @@ namespace Gfx
 
         private: 
             MainMenuPhase() {};
-            
-            sf::Font font;
-            sf::Text introText;
+
+            sf::Texture textures[Gui::SelectedMenuLabel::Length];
+            sf::Sprite screens[Gui::SelectedMenuLabel::Length];
     };
 }

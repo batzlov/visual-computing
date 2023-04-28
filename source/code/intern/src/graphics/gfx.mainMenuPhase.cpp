@@ -1,9 +1,9 @@
 #include <iostream>
-#include <SFML/Graphics/Text.hpp>
-#include <SFML/Graphics/Font.hpp>
+#include <SFML/Graphics.hpp>
 
 #include "gfx.mainMenuPhase.h"
 #include "game/game.application.h"
+#include "gui/gui.mainMenuPhase.h"
 
 namespace Gfx
 {
@@ -13,24 +13,22 @@ namespace Gfx
 
         Game::Application& app = Game::Application::GetInstance();
 
-        if (!font.loadFromFile("amatic-sc-regular.ttf")) 
-        {
-            std::cout << "Error loading font" << std::endl;
-        }
-        // font.loadFromFile("X:\visual-computing\artists\fonts\amatic-sc-regular.ttf");
+        // load textures
+        textures[Gui::SelectedMenuLabel::PLAY].loadFromFile("Y:\\visual-computing\\source\\ressources\\screens\\main-menu-start.png");
+        textures[Gui::SelectedMenuLabel::EXIT].loadFromFile("Y:\\visual-computing\\source\\ressources\\screens\\main-menu-exit.png");
 
-        introText.setFont(font);
-        introText.setString("Hello World!");
-        introText.setCharacterSize(60);
-        introText.setFillColor(sf::Color::White);
+        // apply textures to sprites
+        screens[Gui::SelectedMenuLabel::PLAY].setTexture(textures[Gui::SelectedMenuLabel::PLAY]);
+        screens[Gui::SelectedMenuLabel::EXIT].setTexture(textures[Gui::SelectedMenuLabel::EXIT]);
     }
 
     void MainMenuPhase::Render() 
     {
         Game::Application& app = Game::Application::GetInstance();
+        auto selectLabel = Gui::MainMenuPhase::GetInstance().GetSelectedMenuLabel();
 
         app.window.clear(sf::Color::Black);
-        app.window.draw(introText);
+        app.window.draw(screens[selectLabel]);
         app.window.display();
     }
 

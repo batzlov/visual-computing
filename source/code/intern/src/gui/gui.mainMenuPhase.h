@@ -2,6 +2,13 @@
 
 namespace Gui
 {
+    enum SelectedMenuLabel
+    {
+        PLAY,
+        EXIT,
+        Length
+    };
+
     class MainMenuPhase
     {
         public:
@@ -19,7 +26,13 @@ namespace Gui
             int OnRun();
             void OnLeave();
 
+            SelectedMenuLabel GetSelectedMenuLabel();
+
         private:
-            MainMenuPhase() {};
+            MainMenuPhase();
+
+            SelectedMenuLabel selectedMenuLabel;
+            bool enterPressed;
+            bool escapePressed;
     };
 }
