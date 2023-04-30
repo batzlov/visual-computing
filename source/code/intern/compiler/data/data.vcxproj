@@ -206,21 +206,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\data\data.entityIterator.cpp" />
+    <ClCompile Include="..\..\src\data\data.entityLink.cpp" />
+    <ClCompile Include="..\..\src\data\data.entityList.cpp" />
     <ClCompile Include="..\..\src\data\data.entitySystem.cpp" />
     <ClCompile Include="..\..\src\data\data.event.cpp" />
     <ClCompile Include="..\..\src\data\data.loadPhase.cpp" />
     <ClCompile Include="..\..\src\data\data.mainMenuPhase.cpp" />
+    <ClCompile Include="..\..\src\data\data.map.cpp" />
     <ClCompile Include="..\..\src\data\data.shutdownPhase.cpp" />
     <ClCompile Include="..\..\src\data\data.startupPhase.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\data\data.entity.h" />
+    <ClInclude Include="..\..\src\data\data.entityCategory.h" />
+    <ClInclude Include="..\..\src\data\data.entityFolder.h" />
+    <ClInclude Include="..\..\src\data\data.entityIterator.h" />
+    <ClInclude Include="..\..\src\data\data.entityLink.h" />
+    <ClInclude Include="..\..\src\data\data.entityList.h" />
     <ClInclude Include="..\..\src\data\data.entitySystem.h" />
     <ClInclude Include="..\..\src\data\data.event.h" />
     <ClInclude Include="..\..\src\data\data.eventListener.h" />
     <ClInclude Include="..\..\src\data\data.eventSystem.h" />
     <ClInclude Include="..\..\src\data\data.loadPhase.h" />
     <ClInclude Include="..\..\src\data\data.mainMenuPhase.h" />
+    <ClInclude Include="..\..\src\data\data.map.h" />
     <ClInclude Include="..\..\src\data\data.menuPhase.h" />
+    <ClInclude Include="..\..\src\data\data.sector.h" />
     <ClInclude Include="..\..\src\data\data.shutdownPhase.h" />
     <ClInclude Include="..\..\src\data\data.startupPhase.h" />
   </ItemGroup>
