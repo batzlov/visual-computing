@@ -206,12 +206,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\data\data.entitySystem.cpp" />
+    <ClCompile Include="..\..\src\data\data.event.cpp" />
     <ClCompile Include="..\..\src\data\data.loadPhase.cpp" />
     <ClCompile Include="..\..\src\data\data.mainMenuPhase.cpp" />
     <ClCompile Include="..\..\src\data\data.shutdownPhase.cpp" />
     <ClCompile Include="..\..\src\data\data.startupPhase.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\data\data.entitySystem.h" />
+    <ClInclude Include="..\..\src\data\data.event.h" />
+    <ClInclude Include="..\..\src\data\data.eventListener.h" />
+    <ClInclude Include="..\..\src\data\data.eventSystem.h" />
     <ClInclude Include="..\..\src\data\data.loadPhase.h" />
     <ClInclude Include="..\..\src\data\data.mainMenuPhase.h" />
     <ClInclude Include="..\..\src\data\data.menuPhase.h" />
