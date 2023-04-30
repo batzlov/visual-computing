@@ -16,9 +16,9 @@
 
 #pragma once
 
-#include "core/core_constants.h"
-#include "core/core_operations.h"
-#include "core/core_swap.h"
+#include "core/core.constants.h"
+#include "core/core.operations.h"
+#include "core/core.swap.h"
 
 #include <assert.h>
 

@@ -1,12 +1,14 @@
 #include "game.loadPhase.h"
 
 #include <iostream>
+#include <tinyxml2.h>
 
 #include "data/data.loadPhase.h"
 #include "logic/logic.loadPhase.h"
 #include "graphics/gfx.loadPhase.h"
 #include "gui/gui.loadPhase.h"
 
+using namespace tinyxml2;
 namespace Game 
 {
     int LoadPhase::InternOnEnter() 
@@ -27,7 +29,10 @@ namespace Game
     {
         std::cout << "Game - LoadPhase - InternOnRun" << std::endl;
 
-        Data::LoadPhase::GetInstance().OnRun();
+        XMLDocument* document = new XMLDocument();
+        document->LoadFile("Y:\\visual-computing\\source\\ressources\\levels\\level-1.xml");
+
+        Data::LoadPhase::GetInstance().OnRun(*document);
         Logic::LoadPhase::GetInstance().OnRun();
         Gfx::LoadPhase::GetInstance().OnRun();
         Gui::LoadPhase::GetInstance().OnRun();

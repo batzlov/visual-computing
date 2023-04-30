@@ -1,6 +1,6 @@
 #pragma once
 
-#include "core/core_vector2.h"
+#include "core/core.vector2.h"
 
 namespace Core
 {
