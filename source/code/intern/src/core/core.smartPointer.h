@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "core/core.uncopyable.h"
+#include "core.uncopyable.h"
 
 #include <assert.h>
 

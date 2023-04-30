@@ -1,8 +1,8 @@
 
 #pragma once
 
-#include "core/core.aabb2.h"
-#include "core/core.aabb3.h"
+#include "core.aabb2.h"
+#include "core.aabb3.h"
 
 namespace Core
 {

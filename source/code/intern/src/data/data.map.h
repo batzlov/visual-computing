@@ -5,14 +5,14 @@
 #include "data.entityIterator.h"
 #include "data.sector.h"
 
-#include "core.aabb.h"
+#include "../core/core.aabb.h"
 
 namespace Data
 {
     class Map
     {
         public:
-            EntityIterator BeginEntity(Core::AABB2Float& rAABB, SEntityCategory::Enum category);
+            EntityIterator BeginEntity(Core::AABB2Float& rAABB, EntityCategory::Enum category);
             EntityIterator NextEntity(EntityIterator where, Core::AABB2Float& rAABB, EntityCategory::Enum category);
 
             EntityIterator BeginEntity(Core::AABB2Float& rAABB);

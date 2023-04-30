@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "core/core.link.h"
+#include "core.link.h"
 
 #include <assert.h>
 

@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "core/core.vector2.h"
+#include "core.vector2.h"
 
 #include <assert.h>
 

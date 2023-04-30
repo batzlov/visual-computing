@@ -1,9 +1,9 @@
 
 #pragma once
 
-#include "core/core.matrix2x2.h"
-#include "core/core.matrix3x3.h"
-#include "core/core.matrix4x4.h"
+#include "core.matrix2x2.h"
+#include "core.matrix3x3.h"
+#include "core.matrix4x4.h"
 
 namespace Core
 {

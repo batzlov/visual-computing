@@ -1,9 +1,9 @@
 
 #pragma once
 
-#include "core/core.vector2.h"
-#include "core/core.vector3.h"
-#include "core/core.vector4.h"
+#include "core.vector2.h"
+#include "core.vector3.h"
+#include "core.vector4.h"
 
 namespace Core
 {

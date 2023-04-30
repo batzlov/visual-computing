@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include "core/core.constants.h"
+#include "core.constants.h"
 
 #include <math.h>
 

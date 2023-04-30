@@ -1,8 +1,8 @@
 
 #pragma once
 
-#include "core/core.pool.h"
-#include "core/core.uncopyable.h"
+#include "core.pool.h"
+#include "core.uncopyable.h"
 
 #include <assert.h>
 #include <vector>
