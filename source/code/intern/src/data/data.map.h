@@ -5,6 +5,8 @@
 #include "data.entityIterator.h"
 #include "data.sector.h"
 
+#include "core.aabb.h"
+
 namespace Data
 {
     class Map
