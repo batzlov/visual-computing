@@ -1,4 +1,4 @@
-#include <tinyxml2.cpp>
+#include <tinyxml2.h>
 
 #include "data.startupPhase.h"
 #include "data.metaEntitySystem.h"

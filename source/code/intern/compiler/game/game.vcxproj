@@ -147,8 +147,8 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <OutputFile>$(SolutionDir)..\build\win64\$(ProjectName)\$(Configuration)\$(TargetFileName)</OutputFile>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(SolutionDir)..\..\extern\sfml\lib\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-window-d.lib;sfml-system-d.lib;sfml-graphics-d.lib;sfml-main-d.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(SolutionDir)..\..\extern\sfml\lib\;$(SolutionDir)..\..\extern\tinyxml2\lib\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-window-d.lib;sfml-system-d.lib;sfml-graphics-d.lib;sfml-main-d.lib;tinyxml2_debug.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy ..\..\build\win64\$(ProjectName)\$(Configuration)\*.exe ..\..\..\..\bin\</Command>
@@ -170,8 +170,8 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <OutputFile>$(SolutionDir)..\build\win64\$(ProjectName)\$(Configuration)\$(TargetFileName)</OutputFile>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(SolutionDir)..\..\extern\sfml\lib\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(SolutionDir)..\..\extern\sfml\lib\;$(SolutionDir)..\..\extern\tinyxml2\lib\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;tinyxml2.lib%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy ..\..\build\win64\$(ProjectName)\$(Configuration)\*.exe ..\..\..\..\bin\</Command>
