@@ -1,6 +1,7 @@
 #include "game.startupPhase.h"
 
 #include <iostream>
+#include <tinyxml2.h>
 
 #include "data/data.startupPhase.h"
 #include "logic/logic.startupPhase.h"
@@ -28,7 +29,10 @@ namespace Game
     {
         std::cout << "Game - StartupPhase - InternOnRun" << std::endl;
 
-        Data::StartupPhase::GetInstance().OnRun();
+        tinyxml2::XMLDocument* document = new tinyxml2::XMLDocument();
+        document->LoadFile("Y:\\visual-computing\\source\\ressources\\meta-entities.xml");
+
+        Data::StartupPhase::GetInstance().OnRun(*document);
         Logic::StartupPhase::GetInstance().OnRun();
         Gfx::StartupPhase::GetInstance().OnRun();
         Gui::StartupPhase::GetInstance().OnRun();

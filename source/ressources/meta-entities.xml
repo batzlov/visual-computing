@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<meta-entities>
+    <meta-entity name="block-brick">
+        <data>
+            <size value="1" />
+        </data>
+        <logic></logic>
+        <graphics>
+            <texture>block-brick.png</texture>
+        </graphics>
+    </meta-entity>
+    <meta-entity name="block-clay">
+        <data>
+            <size value="1" />
+        </data>
+        <logic></logic>
+        <graphics>
+            <texture>block-clay.png</texture>
+        </graphics>
+    </meta-entity>
+    <meta-entity name="block-paper">
+        <data>
+            <size value="1" />
+        </data>
+        <logic></logic>
+        <graphics>
+            <texture>block-paper.png</texture>
+        </graphics>
+    </meta-entity>
+</meta-entities>

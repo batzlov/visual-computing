@@ -214,6 +214,8 @@
     <ClCompile Include="..\..\src\data\data.loadPhase.cpp" />
     <ClCompile Include="..\..\src\data\data.mainMenuPhase.cpp" />
     <ClCompile Include="..\..\src\data\data.map.cpp" />
+    <ClInclude Include="..\..\src\data\data.metaEntity.cpp" />
+    <ClInclude Include="..\..\src\data\data.metaEntitySystem.cpp" />
     <ClCompile Include="..\..\src\data\data.shutdownPhase.cpp" />
     <ClCompile Include="..\..\src\data\data.startupPhase.cpp" />
   </ItemGroup>
@@ -231,6 +233,8 @@
     <ClInclude Include="..\..\src\data\data.loadPhase.h" />
     <ClInclude Include="..\..\src\data\data.mainMenuPhase.h" />
     <ClInclude Include="..\..\src\data\data.map.h" />
+    <ClInclude Include="..\..\src\data\data.metaEntity.h" />
+    <ClInclude Include="..\..\src\data\data.metaEntitySytem.h" />
     <ClInclude Include="..\..\src\data\data.menuPhase.h" />
     <ClInclude Include="..\..\src\data\data.sector.h" />
     <ClInclude Include="..\..\src\data\data.shutdownPhase.h" />
