@@ -1,3 +1,5 @@
+#include <tinyxml2.cpp>
+
 #include "data.startupPhase.h"
 
 namespace Data 
