@@ -1,6 +1,8 @@
 #include <iostream>
+#include <string>
 #include <SFML/Graphics.hpp>
 
+#include "core/core.config.h"
 #include "gfx.mainMenuPhase.h"
 #include "game/game.application.h"
 #include "gui/gui.mainMenuPhase.h"
@@ -13,9 +15,14 @@ namespace Gfx
 
         Game::Application& app = Game::Application::GetInstance();
 
+        std::string filePath;
+
         // load textures
-        textures[Gui::SelectedMenuLabel::PLAY].loadFromFile("Y:\\visual-computing\\source\\ressources\\screens\\main-menu-start.png");
-        textures[Gui::SelectedMenuLabel::EXIT].loadFromFile("Y:\\visual-computing\\source\\ressources\\screens\\main-menu-exit.png");
+        filePath = Core::Config::screensDir + "main-menu-start.png";
+        textures[Gui::SelectedMenuLabel::PLAY].loadFromFile(filePath.c_str());
+
+        filePath = Core::Config::screensDir + "main-menu-exit.png";
+        textures[Gui::SelectedMenuLabel::EXIT].loadFromFile(filePath.c_str());
 
         // apply textures to sprites
         screens[Gui::SelectedMenuLabel::PLAY].setTexture(textures[Gui::SelectedMenuLabel::PLAY]);

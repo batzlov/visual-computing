@@ -99,6 +99,9 @@
     <ClInclude Include="..\..\src\core\core.vector4.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\core\core.config.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\core\core.idManager.cpp">
@@ -108,6 +111,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\core\core.time.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\core\core.config.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

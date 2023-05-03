@@ -31,6 +31,7 @@
     <ClInclude Include="..\..\src\core\core.aabb2.h" />
     <ClInclude Include="..\..\src\core\core.aabb3.h" />
     <ClInclude Include="..\..\src\core\core.allocator.h" />
+    <ClInclude Include="..\..\src\core\core.config.h" />
     <ClInclude Include="..\..\src\core\core.constants.h" />
     <ClInclude Include="..\..\src\core\core.idManager.h" />
     <ClInclude Include="..\..\src\core\core.itemManager.h" />
@@ -57,6 +58,7 @@
     <ClInclude Include="..\..\src\core\core.vector4.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\core\core.config.cpp" />
     <ClCompile Include="..\..\src\core\core.idManager.cpp" />
     <ClCompile Include="..\..\src\core\core.log.cpp" />
     <ClCompile Include="..\..\src\core\core.time.cpp" />

@@ -45,10 +45,10 @@
     <ClCompile Include="..\..\src\data\data.map.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\data\data.metaEntity.cpp">
+    <ClCompile Include="..\..\src\data\data.metaEntitySystem.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\data\data.metaEntitySystem.cpp">
+    <ClCompile Include="..\..\src\data\data.metaEntity.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
@@ -104,10 +104,10 @@
     <ClInclude Include="..\..\src\data\data.metaEntity.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\data\data.metaEntitySystem.h">
+    <ClInclude Include="..\..\src\data\data.sector.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\data\data.sector.h">
+    <ClInclude Include="..\..\src\data\data.metaEntitySystem.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

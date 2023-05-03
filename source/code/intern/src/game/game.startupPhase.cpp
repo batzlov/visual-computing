@@ -1,8 +1,10 @@
 #include "game.startupPhase.h"
 
 #include <iostream>
+#include <string>
 #include <tinyxml2.h>
 
+#include "core/core.config.h"
 #include "data/data.startupPhase.h"
 #include "logic/logic.startupPhase.h"
 #include "graphics/gfx.startupPhase.h"
@@ -30,7 +32,8 @@ namespace Game
         std::cout << "Game - StartupPhase - InternOnRun" << std::endl;
 
         tinyxml2::XMLDocument* document = new tinyxml2::XMLDocument();
-        document->LoadFile("Y:\\visual-computing\\source\\ressources\\meta-entities.xml");
+        const std::string filePath = Core::Config::ressourcesDir + "meta-entities.xml";
+        document->LoadFile(filePath.c_str());
 
         Data::StartupPhase::GetInstance().OnRun(*document);
         Logic::StartupPhase::GetInstance().OnRun();

@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include "data/data.metaEntitySystem.h"
+#include "data.metaEntitySystem.h"
 
-namespace Data 
+namespace Data
 {
     int MetaEntitySystem::Initialize(tinyxml2::XMLDocument& document)
     {
@@ -11,12 +11,12 @@ namespace Data
         tinyxml2::XMLElement* metaEntities = document.FirstChildElement("meta-entities");
         tinyxml2::XMLElement* metaEntity = metaEntities->FirstChildElement("meta-entity");
 
-        while(metaEntity !== nullptr)
+        while (metaEntity != nullptr)
         {
             std::string name = metaEntity->Attribute("name");
 
             MetaEntity& entity = itemManager.CreateItem(idManager.Register(name));
-            entity.SetName(name);
+            // entity.SetName(name);
 
             metaEntityCount++;
 
