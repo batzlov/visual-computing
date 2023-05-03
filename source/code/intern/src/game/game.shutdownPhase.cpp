@@ -11,8 +11,6 @@ namespace Game
 {
     int ShutdownPhase::InternOnEnter()
     {
-        std::cout << "ShutdownPhase::InternOnEnter()" << std::endl;
-
         Data::ShutdownPhase::GetInstance().OnEnter();
         Logic::ShutdownPhase::GetInstance().OnEnter();
         Gfx::ShutdownPhase::GetInstance().OnEnter();
@@ -23,8 +21,6 @@ namespace Game
 
     int ShutdownPhase::InternOnRun()
     {
-        std::cout << "ShutdownPhase::InternOnRun()" << std::endl;
-
         Data::ShutdownPhase::GetInstance().OnRun();
         Logic::ShutdownPhase::GetInstance().OnRun();
         Gfx::ShutdownPhase::GetInstance().OnRun();
@@ -35,8 +31,6 @@ namespace Game
 
     int ShutdownPhase::InternOnLeave()
     {
-        std::cout << "ShutdownPhase::InternOnLeave()" << std::endl;
-
         Data::ShutdownPhase::GetInstance().OnLeave();
         Logic::ShutdownPhase::GetInstance().OnLeave();
         Gfx::ShutdownPhase::GetInstance().OnLeave();

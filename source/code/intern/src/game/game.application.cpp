@@ -26,8 +26,6 @@ namespace Game
 
     void Application::Startup()
     {
-        std::cout << "Application::Startup()" << std::endl;
-
         // create the window
         window.create(sf::VideoMode(1600, 1200), "Visual Computing - Robert Ackermann");
 
@@ -39,8 +37,6 @@ namespace Game
 
     void Application::Run()
     {
-        std::cout << "Application::Run()" << std::endl;
-
         // game loop
         for (;;) 
         {
@@ -63,10 +59,7 @@ namespace Game
         }
     }
 
-    void Application::Shutdown()
-    {
-        std::cout << "Application::Shutdown()" << std::endl;
-    }
+    void Application::Shutdown() {}
 
     void Application::HandleEvent(sf::Event event)
     {
