@@ -16,13 +16,11 @@ namespace Data
             std::string name = metaEntity->Attribute("name");
 
             MetaEntity& entity = itemManager.CreateItem(idManager.Register(name));
-            // entity.SetName(name);
+            entity.name = name;
 
             metaEntityCount++;
 
             metaEntity = metaEntity->NextSiblingElement("meta-entity");
-
-            std::cout << "name of meta entity: " << name << std::endl;
         }
 
         return metaEntityCount;

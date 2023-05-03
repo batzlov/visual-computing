@@ -2,13 +2,34 @@
 
 #include <tinyxml2.h>
 
-#include "core/core_id_manager.h"
-#include "core/core_item_manager.h"
-#include "data/entity.h"
+#include "../core/core.idManager.h"
+#include "../core/core.itemManager.h"
+#include "data.entity.h"
 
 using namespace tinyxml2;
 
 namespace Data 
 {
-    
+    class EntitySystem 
+    {
+        public: 
+            static EntitySystem& GetInstance()
+            {
+                static EntitySystem instance;
+                return instance;
+            }
+
+            EntitySystem (const EntitySystem&) = delete;
+            EntitySystem& operator = (const EntitySystem&) = delete;
+
+        public:
+            int Initialize(XMLDocument& document);
+
+        private:
+            EntitySystem() {};
+
+        private:
+            Core::CIDManager idManager;
+            Core::CItemManager<Entity> itemManager;
+    };
 }

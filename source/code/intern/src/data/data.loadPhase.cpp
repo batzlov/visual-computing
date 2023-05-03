@@ -1,6 +1,8 @@
 #include <iostream>
+#include <tinyxml2.h>
 
 #include "data.loadPhase.h"
+#include "data.entitySystem.h"
 
 namespace Data 
 {
@@ -8,9 +10,8 @@ namespace Data
 
     void LoadPhase::OnRun(tinyxml2::XMLDocument& document) 
     {
-        std::cout << "LoadPhase::OnRun()" << std::endl;
-
         // we need a entity system that can load entities from xml
+        Data::EntitySystem& entitySystem = Data::EntitySystem::GetInstance();
     }
     
     void LoadPhase::OnLeave() {}
