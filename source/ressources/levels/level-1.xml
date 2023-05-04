@@ -1,25 +1,127 @@
 <entities>
-    <entity name="abstract_2_20_6" meta-entity="block_abstract_2">
+    <entity name="abstract_2" meta-entity="block_abstract_2">
         <data>
             <position>0.0;550.0;0.0</position>
         </data>
         <logic/>
     </entity>
-    <entity name="abstract_2_7_7" meta-entity="block_abstract_2">
+    <entity name="abstract_2" meta-entity="block_abstract_2">
         <data>
             <position>50.0;550.0;0.0</position>
         </data>
         <logic/>
     </entity>
-    <entity name="abstract_2_8_7" meta-entity="block_abstract_2">
+    <entity name="abstract_2" meta-entity="block_abstract_2">
         <data>
             <position>100.0;550.0;0.0</position>
         </data>
         <logic/>
     </entity>
-     <entity name="abstract_2_8_7" meta-entity="block_abstract_2">
+    <entity name="abstract_2" meta-entity="block_abstract_2">
         <data>
             <position>150.0;550.0;0.0</position>
+        </data>
+        <logic/>
+    </entity>
+    <entity name="abstract_2" meta-entity="block_abstract_2">
+        <data>
+            <position>200.0;550.0;0.0</position>
+        </data>
+        <logic/>
+    </entity>
+    <entity name="abstract_2" meta-entity="block_abstract_2">
+        <data>
+            <position>250.0;550.0;0.0</position>
+        </data>
+        <logic/>
+    </entity>
+    <entity name="abstract_2" meta-entity="block_abstract_2">
+        <data>
+            <position>300.0;550.0;0.0</position>
+        </data>
+        <logic/>
+    </entity>
+    <entity name="abstract_2" meta-entity="block_abstract_2">
+        <data>
+            <position>350.0;550.0;0.0</position>
+        </data>
+        <logic/>
+    </entity>
+    <entity name="abstract_2" meta-entity="block_abstract_2">
+        <data>
+            <position>400.0;550.0;0.0</position>
+        </data>
+        <logic/>
+    </entity>
+    <entity name="abstract_2" meta-entity="block_abstract_2">
+        <data>
+            <position>450.0;550.0;0.0</position>
+        </data>
+        <logic/>
+    </entity>
+    <entity name="abstract_2" meta-entity="block_abstract_2">
+        <data>
+            <position>500.0;550.0;0.0</position>
+        </data>
+        <logic/>
+    </entity>
+    <entity name="abstract_2" meta-entity="block_abstract_2">
+        <data>
+            <position>550.0;550.0;0.0</position>
+        </data>
+        <logic/>
+    </entity>
+    <entity name="abstract_2" meta-entity="block_abstract_2">
+        <data>
+            <position>600.0;550.0;0.0</position>
+        </data>
+        <logic/>
+    </entity>
+    <entity name="abstract_2" meta-entity="block_abstract_2">
+        <data>
+            <position>650.0;550.0;0.0</position>
+        </data>
+        <logic/>
+    </entity>
+    <entity name="abstract_2" meta-entity="block_abstract_2">
+        <data>
+            <position>700.0;550.0;0.0</position>
+        </data>
+        <logic/>
+    </entity>
+    <entity name="abstract_2" meta-entity="block_abstract_2">
+        <data>
+            <position>750.0;550.0;0.0</position>
+        </data>
+        <logic/>
+    </entity>
+    <entity name="abstract_2" meta-entity="block_abstract_2">
+        <data>
+            <position>800.0;550.0;0.0</position>
+        </data>
+        <logic/>
+    </entity>
+    <entity name="abstract_2" meta-entity="block_abstract_2">
+        <data>
+            <position>850.0;550.0;0.0</position>
+        </data>
+        <logic/>
+    </entity>
+    <entity name="abstract_2" meta-entity="block_abstract_2">
+        <data>
+            <position>900.0;550.0;0.0</position>
+        </data>
+        <logic/>
+    </entity>
+    <entity name="abstract_2" meta-entity="block_abstract_2">
+        <data>
+            <position>950.0;550.0;0.0</position>
+        </data>
+        <logic/>
+    </entity>
+    <entity name="abstract_2" meta-entity="block_abstract_2">
+        <data>
+            <position>1000.0;550.0;0.0</position>
         </data>
         <logic/>
     </entity>
