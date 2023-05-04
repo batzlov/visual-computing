@@ -97,6 +97,16 @@ namespace Core
                 m_ItemsByID.clear();
             }
 
+            std::vector<XPtr> GetAll() 
+            {
+                return m_ItemsByID;
+            }
+
+            std::vector<XPtr> GetAll() const
+            {
+                return m_ItemsByID;
+            }
+
         private:
 
             using CItemPool = Core::CPool<T, 64 * sizeof(T)>;

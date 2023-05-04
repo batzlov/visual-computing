@@ -24,6 +24,9 @@ namespace Data
         public:
             int Initialize(tinyxml2::XMLDocument& document);
 
+            Core::CIDManager::BID GetMetaEntityId(std::string name);
+            MetaEntity& GetMetaEntityById(Core::CIDManager::BID id);
+
         private:
             MetaEntitySystem() {}
 

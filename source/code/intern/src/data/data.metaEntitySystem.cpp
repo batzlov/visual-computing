@@ -25,4 +25,14 @@ namespace Data
 
         return metaEntityCount;
     }
+
+    Core::CIDManager::BID MetaEntitySystem::GetMetaEntityId(std::string name) 
+    {
+        return idManager.GetByName(name);
+    }
+
+    MetaEntity& MetaEntitySystem::GetMetaEntityById(Core::CIDManager::BID id) 
+    {
+        return itemManager.GetItem(id);
+    }
 }

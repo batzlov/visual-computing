@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <meta-entities>
-    <meta-entity name="block-brick">
+    <meta-entity name="block_brick">
         <data>
             <size value="1" />
         </data>
@@ -9,7 +9,7 @@
             <texture>block-brick.png</texture>
         </graphics>
     </meta-entity>
-    <meta-entity name="block-clay">
+    <meta-entity name="block_clay">
         <data>
             <size value="1" />
         </data>
@@ -18,13 +18,40 @@
             <texture>block-clay.png</texture>
         </graphics>
     </meta-entity>
-    <meta-entity name="block-paper">
+    <meta-entity name="block_paper">
         <data>
             <size value="1" />
         </data>
         <logic></logic>
         <graphics>
             <texture>block-paper.png</texture>
+        </graphics>
+    </meta-entity>
+    <meta-entity name="block_abstract_1">
+        <data>
+            <size value="1" />
+        </data>
+        <logic></logic>
+        <graphics>
+            <texture>block-abstract-1.png</texture>
+        </graphics>
+    </meta-entity>
+    <meta-entity name="block_abstract_2">
+        <data>
+            <size value="1" />
+        </data>
+        <logic></logic>
+        <graphics>
+            <texture>block-abstract-2.png</texture>
+        </graphics>
+    </meta-entity>
+    <meta-entity name="block_abstract_3">
+        <data>
+            <size value="1" />
+        </data>
+        <logic></logic>
+        <graphics>
+            <texture>block-abstract-3.png</texture>
         </graphics>
     </meta-entity>
 </meta-entities>

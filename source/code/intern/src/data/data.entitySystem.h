@@ -24,6 +24,7 @@ namespace Data
 
         public:
             int Initialize(XMLDocument& document);
+            std::vector<Data::Entity*> GetAll();
 
         private:
             EntitySystem() {};

@@ -11,7 +11,7 @@ namespace Data
     void LoadPhase::OnRun(tinyxml2::XMLDocument& document) 
     {
         // we need a entity system that can load entities from xml
-        Data::EntitySystem& entitySystem = Data::EntitySystem::GetInstance();
+        Data::EntitySystem::GetInstance().Initialize(document);
     }
     
     void LoadPhase::OnLeave() {}

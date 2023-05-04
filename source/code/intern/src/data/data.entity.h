@@ -2,6 +2,7 @@
 #pragma once
 
 #include "data.entityLink.h"
+#include "data.metaEntity.h"
 
 #include <array>
 
@@ -25,6 +26,9 @@ namespace Data
         public:
             void SetFacet(Facet type, void* facet);
             void* GetFacet(Facet type);
+
+        public:
+            MetaEntity* metaEntity;
 
         private:
             using FacetArray = std::array<void*, NumberOfFacets>;

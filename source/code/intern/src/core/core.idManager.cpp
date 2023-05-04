@@ -54,6 +54,11 @@ namespace Core
         return (*m_NamesByID.at(_ID)).first;
     }
 
+    CIDManager::BID CIDManager::GetByName(const std::string& _rString) const
+    {
+        return m_IDsByName.at(_rString);
+    }
+
     // -----------------------------------------------------------------------------
 
     size_t CIDManager::GetNumberOfNames() const
