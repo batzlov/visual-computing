@@ -49,6 +49,21 @@ namespace Gfx
             app.window.draw(entitySprite);
         }
 
+        // handle left or right arrow key is pressed
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) 
+        {
+            sf::View view = app.window.getView();
+            view.move(25.0f, 0.0f);
+            app.window.setView(view);
+        }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        {
+            sf::View view = app.window.getView();
+            view.move(-25.0f, 0.0f);
+            app.window.setView(view);
+        }
+
         app.window.display();
     }
 
