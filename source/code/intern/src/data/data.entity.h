@@ -3,6 +3,7 @@
 
 #include "data.entityLink.h"
 #include "data.metaEntity.h"
+#include "../core/core.vector2.h";
 
 #include <array>
 
@@ -28,6 +29,7 @@ namespace Data
             void* GetFacet(Facet type);
 
         public:
+            Core::CVector2<float> position;
             MetaEntity* metaEntity;
 
         private:

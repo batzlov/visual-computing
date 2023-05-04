@@ -24,6 +24,7 @@ namespace Data
 
         public:
             int Initialize(XMLDocument& document);
+            std::vector<std::string> Explode(std::string string, const char& delimiter);
             std::vector<Data::Entity*> GetAll();
 
         private:

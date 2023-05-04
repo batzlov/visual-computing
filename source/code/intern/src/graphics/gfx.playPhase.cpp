@@ -23,6 +23,7 @@ namespace Gfx
         bgTexture.loadFromFile(filePath.c_str());
 
         sf::Sprite bgSprite;
+        bgSprite.setScale(0.5, 0.5);
         bgSprite.setTexture(bgTexture);
 
         app.window.draw(bgSprite);
@@ -32,7 +33,18 @@ namespace Gfx
         std::vector<Data::Entity*> entities = Data::EntitySystem::GetInstance().GetAll();
         for(auto entity : entities) 
         {
-            // draw the entities
+            std::string filePath;
+            sf::Texture entityTexture;
+            sf::Sprite entitySprite;
+
+            filePath = (Core::Config::ressourcesDir + "blocks\\block-brick.png").c_str();
+            entityTexture.loadFromFile(filePath);
+
+            entitySprite.setTexture(entityTexture);
+            entitySprite.setScale(0.25, 0.25);
+            entitySprite.setPosition(entity->position[0], entity->position[1]);
+
+            app.window.draw(entitySprite);
         }
 
         app.window.display();

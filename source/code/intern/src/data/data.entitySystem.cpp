@@ -4,6 +4,7 @@
 
 #include "data.entitySystem.h"
 #include "data.metaEntitySystem.h"
+#include <sstream>
 
 namespace Data 
 {
@@ -24,9 +25,22 @@ namespace Data
             auto metaEntityId = metaEntitySystem.GetMetaEntityId(metaEntityName);
             Data::MetaEntity& metaEntity = metaEntitySystem.GetMetaEntityById(metaEntityId);
 
+            auto positionFloatStrings = this->Explode(
+                xmlEntity
+                ->FirstChildElement("data")
+                ->FirstChildElement("position")
+                ->FirstChild()
+                ->Value(),
+                ';'
+            );
+
             auto entityId = idManager.Register(entityName);
             Entity& entity = itemManager.CreateItem(entityId);
             entity.metaEntity = &metaEntity;
+            entity.position = Core::Float2(
+                std::stof(positionFloatStrings[0]),
+                std::stof(positionFloatStrings[1])
+            );
             
 
             // log the name of the entity so we know it was loaded
@@ -40,6 +54,20 @@ namespace Data
         }
 
         return entityCount;
+    }
+
+    std::vector<std::string> EntitySystem::Explode(std::string string, const char& delimiter) 
+    {
+        std::string tmpSubString;
+        std::stringstream ss(string);
+        std::vector<std::string> subStrings;
+
+        while (getline(ss, tmpSubString, delimiter))
+        {
+            subStrings.push_back(tmpSubString);
+        }
+
+        return subStrings;
     }
 
     std::vector<Data::Entity*> EntitySystem::GetAll()
