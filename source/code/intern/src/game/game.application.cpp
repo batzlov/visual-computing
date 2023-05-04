@@ -27,7 +27,7 @@ namespace Game
     void Application::Startup()
     {
         // create the window
-        window.create(sf::VideoMode(1600, 1200), "Visual Computing - Robert Ackermann");
+        window.create(sf::VideoMode(800, 600), "Visual Computing - Robert Ackermann");
 
         currentPhaseIndex = Phase::STARTUP;
         Phase* currentPhase = phases[currentPhaseIndex];
