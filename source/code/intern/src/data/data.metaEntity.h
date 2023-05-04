@@ -22,5 +22,7 @@ namespace Data
         public:
             int id;
             std::string name;
+
+            void* facets[2];
     };
 }

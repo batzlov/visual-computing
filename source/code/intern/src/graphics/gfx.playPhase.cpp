@@ -1,5 +1,6 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <SFML/Window/Keyboard.hpp>
 
 #include "gfx.playPhase.h"
 #include "core/core.config.h"
@@ -34,13 +35,14 @@ namespace Gfx
         for(auto entity : entities) 
         {
             std::string filePath;
-            sf::Texture entityTexture;
+            sf::Texture* entityTexture;
             sf::Sprite entitySprite;
 
-            filePath = (Core::Config::ressourcesDir + "blocks\\block-brick.png").c_str();
-            entityTexture.loadFromFile(filePath);
+            // filePath = (Core::Config::ressourcesDir + "blocks\\block-brick.png").c_str();
+            // entityTexture.loadFromFile(filePath);
+            entityTexture = static_cast<sf::Texture*>(entity->metaEntity->facets[0]);
 
-            entitySprite.setTexture(entityTexture);
+            entitySprite.setTexture(*entityTexture);
             entitySprite.setScale(0.25, 0.25);
             entitySprite.setPosition(entity->position[0], entity->position[1]);
 

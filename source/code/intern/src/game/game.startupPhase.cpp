@@ -31,7 +31,7 @@ namespace Game
 
         Data::StartupPhase::GetInstance().OnRun(*document);
         Logic::StartupPhase::GetInstance().OnRun();
-        Gfx::StartupPhase::GetInstance().OnRun();
+        Gfx::StartupPhase::GetInstance().OnRun(*document);
         Gui::StartupPhase::GetInstance().OnRun();
 
         return Type::MAIN_MENU;

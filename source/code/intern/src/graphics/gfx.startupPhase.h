@@ -1,5 +1,7 @@
 #pragma once
 
+#include <tinyxml2.h>
+
 namespace Gfx 
 {
     class StartupPhase 
@@ -16,7 +18,7 @@ namespace Gfx
 
         public:
             void OnEnter();
-            void OnRun();
+            void OnRun(tinyxml2::XMLDocument& document);
             void OnLeave();
 
         private:
