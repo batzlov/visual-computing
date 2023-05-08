@@ -25,13 +25,13 @@ namespace Logic
             switch (command->GetType())
             {
                 case CommandType::MoveLeft:
-                    MovePlayer(Core::Float2(-10, 0));
+                    MovePlayer(Core::Float2(-20, 0));
                     break;
                 case CommandType::MoveRight:
-                    MovePlayer(Core::Float2(10, 0));
+                    MovePlayer(Core::Float2(20, 0));
                     break;
                 case CommandType::Jump:
-                    MovePlayer(Core::Float2(0, 100));
+                    MovePlayer(Core::Float2(0, -50));
                     break;
                 default:
                     std::cout << "default" << std::endl;
