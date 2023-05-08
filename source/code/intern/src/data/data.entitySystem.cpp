@@ -1,10 +1,11 @@
 #include <iostream>
 #include <tinyxml2.h>
 #include <string>
+#include <sstream>
 
 #include "data.entitySystem.h"
 #include "data.metaEntitySystem.h"
-#include <sstream>
+#include "data.playerSystem.h"
 
 namespace Data 
 {
@@ -41,12 +42,19 @@ namespace Data
                 std::stof(positionFloatStrings[0]),
                 std::stof(positionFloatStrings[1])
             );
-            
 
-            // log the name of the entity so we know it was loaded
-            std::cout << "Entity: " << entityName << std::endl;
-            std::cout << "Meta Entity: " << metaEntityName << std::endl;
-            std::cout << "-------------------------------" << std::endl;
+            // handle the player entity seperately
+            if (entity.metaEntity->name == "player")
+            {
+                std::cout << "init player" << std::endl;
+                Data::PlayerSystem& playerSystem = Data::PlayerSystem::GetInstance();
+                playerSystem.SetPlayer(&entity);
+            
+                // log the name of the entity so we know it was loaded
+                std::cout << "Entity: " << entityName << std::endl;
+                std::cout << "Meta Entity: " << metaEntityName << std::endl;
+                std::cout << "-------------------------------" << std::endl;
+            }
 
             entityCount++;
 

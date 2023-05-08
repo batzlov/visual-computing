@@ -11,6 +11,8 @@
 #include "game.unloadPhase.h"
 #include "game.shutdownPhase.h"
 
+#include "logic/logic.commandSystem.h"
+
 namespace Game 
 {
     Application::Application()
@@ -74,6 +76,30 @@ namespace Game
             case sf::Event::KeyPressed:
             {
                 // std::cout << "key pressed, key code: " << event.key.code << std::endl;
+                Logic::CommandSystem& commandSystem = Logic::CommandSystem::GetInstance();
+                Logic::Command& command = commandSystem.CreateCommand();
+                
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) 
+                {
+                    std::cout << "right" << std::endl;
+                    command.SetType(Logic::MoveRight);
+                }
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+                {
+                    std::cout << "left" << std::endl;
+                    command.SetType(Logic::MoveLeft);
+                }
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+                {
+                    std::cout << "space" << std::endl;
+                    command.SetType(Logic::Jump);
+                }
+                else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+                {
+                    // handle escape
+                }
+
+                commandSystem.AddCommand(command);
             }
             break;
             case sf::Event::Closed: 

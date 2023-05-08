@@ -4,6 +4,8 @@
 #include "logic.command.h"
 #include "logic.commandSystem.h"
 
+#include "../data/data.playerSystem.h"
+
 namespace Logic 
 {
     void System::OnTurn()
@@ -23,15 +25,16 @@ namespace Logic
             switch (command->GetType())
             {
                 case CommandType::MoveLeft:
-                    MovePlayer("left");
+                    MovePlayer(Core::Float2(-10, 0));
                     break;
                 case CommandType::MoveRight:
-                    MovePlayer("right");
+                    MovePlayer(Core::Float2(10, 0));
                     break;
                 case CommandType::Jump:
-                    MovePlayer("jump");
+                    MovePlayer(Core::Float2(0, 100));
                     break;
                 default:
+                    std::cout << "default" << std::endl;
                     break;
             }
 
@@ -39,8 +42,26 @@ namespace Logic
         }
     }
 
-    void System::MovePlayer(std::string direction)
+    void System::MovePlayer(Core::Float2 orientation)
     {
-        std::cout << "Player moved " << direction << std::endl;
+        Data::PlayerSystem& playerSystem = Data::PlayerSystem::GetInstance();
+        Data::Entity* player = playerSystem.GetPlayer();
+        
+        if(player != nullptr) 
+        {
+            std::cout << "player before updating position -> " << player->position[0] << " - " << player->position[1] << std::endl;
+           
+            // update player position
+            player->position = Core::Float2(
+                player->position[0] + orientation[0],
+                player->position[1] + orientation[1]
+            );
+
+            std::cout << "player after updating position -> " << player->position[0] << " - " << player->position[1] << std::endl;
+        }
+        else
+        {
+            std::cout << "player is nullptr" << std::endl;
+        }
     }
 }

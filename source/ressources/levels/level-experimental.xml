@@ -1,4 +1,10 @@
 <entities>
+    <entity name="paper_player" meta-entity="block_player">
+        <data>
+            <position>150;450</position>
+        </data>
+        <logic/>
+    </entity>
     <entity name="abstract_2_20_6" meta-entity="block_abstract_2">
         <data>
             <position>1000;300</position>

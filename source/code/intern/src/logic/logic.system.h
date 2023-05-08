@@ -2,6 +2,8 @@
 
 #include <string>
 
+#include "../core/core.vector.h"
+
 namespace Logic
 {
     class System 
@@ -21,7 +23,7 @@ namespace Logic
 
         public: 
             void HandleCommands();
-            void MovePlayer(std::string direction);
+            void MovePlayer(Core::Float2 orientation);
 
 
         private:

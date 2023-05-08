@@ -13,6 +13,8 @@ namespace Game
 {
     int PlayPhase::InternOnEnter() 
     {
+        Core::Time::Reset();
+
         Gfx::PlayPhase::GetInstance().OnEnter();
         Gui::PlayPhase::GetInstance().OnEnter();
         Logic::PlayPhase::GetInstance().OnEnter();
@@ -22,6 +24,8 @@ namespace Game
 
     int PlayPhase::InternOnRun() 
     {
+        Core::Time::OnFrame();
+
         Gfx::PlayPhase::GetInstance().OnRun();
         Gui::PlayPhase::GetInstance().OnRun();
         Logic::PlayPhase::GetInstance().OnRun();

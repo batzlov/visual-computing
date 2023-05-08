@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <meta-entities>
+    <meta-entity name="block_player">
+        <data>
+            <size value="1" />
+        </data>
+        <logic></logic>
+        <graphics>
+            <texture value="block-paper.png" />
+        </graphics>
+    </meta-entity>
     <meta-entity name="block_brick">
         <data>
             <size value="1" />
@@ -16,15 +25,6 @@
         <logic></logic>
         <graphics>
             <texture value="block-clay.png" />
-        </graphics>
-    </meta-entity>
-    <meta-entity name="block_paper">
-        <data>
-            <size value="1" />
-        </data>
-        <logic></logic>
-        <graphics>
-            <texture value="block-paper.png" />
         </graphics>
     </meta-entity>
     <meta-entity name="block_abstract_1">

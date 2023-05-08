@@ -51,6 +51,9 @@
     <ClCompile Include="..\..\src\data\data.metaEntity.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\data\data.playerSystem.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\data\data.menuPhase.h">
@@ -108,6 +111,9 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\data\data.metaEntitySystem.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\data\data.playerSystem.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
