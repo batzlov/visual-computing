@@ -34,17 +34,10 @@ namespace Gfx
         std::vector<Data::Entity*> entities = Data::EntitySystem::GetInstance().GetAll();
         for(auto entity : entities) 
         {
-            if(entity->metaEntity->name == "player") 
-            {
-                std::cout << "draw player: " << std::endl;
-            }
-
             std::string filePath;
             sf::Texture* entityTexture;
             sf::Sprite entitySprite;
 
-            // filePath = (Core::Config::ressourcesDir + "blocks\\block-brick.png").c_str();
-            // entityTexture.loadFromFile(filePath);
             entityTexture = static_cast<sf::Texture*>(entity->metaEntity->facets[0]);
 
             entitySprite.setTexture(*entityTexture);

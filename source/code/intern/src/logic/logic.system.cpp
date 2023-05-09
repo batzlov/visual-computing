@@ -25,16 +25,15 @@ namespace Logic
             switch (command->GetType())
             {
                 case CommandType::MoveLeft:
-                    MovePlayer(Core::Float2(-20, 0));
+                    MovePlayer(Core::Float2(-1, 0));
                     break;
                 case CommandType::MoveRight:
-                    MovePlayer(Core::Float2(20, 0));
+                    MovePlayer(Core::Float2(1, 0));
                     break;
                 case CommandType::Jump:
                     MovePlayer(Core::Float2(0, -50));
                     break;
                 default:
-                    std::cout << "default" << std::endl;
                     break;
             }
 
@@ -49,19 +48,8 @@ namespace Logic
         
         if(player != nullptr) 
         {
-            std::cout << "player before updating position -> " << player->position[0] << " - " << player->position[1] << std::endl;
-           
-            // update player position
-            player->position = Core::Float2(
-                player->position[0] + orientation[0],
-                player->position[1] + orientation[1]
-            );
-
-            std::cout << "player after updating position -> " << player->position[0] << " - " << player->position[1] << std::endl;
-        }
-        else
-        {
-            std::cout << "player is nullptr" << std::endl;
+            playerSystem.UpdatePhysics();
+            playerSystem.MovePlayer(orientation[0], orientation[1]);
         }
     }
 }

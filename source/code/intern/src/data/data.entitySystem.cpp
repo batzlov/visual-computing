@@ -46,14 +46,8 @@ namespace Data
             // handle the player entity seperately
             if (entity.metaEntity->name == "player")
             {
-                std::cout << "init player" << std::endl;
                 Data::PlayerSystem& playerSystem = Data::PlayerSystem::GetInstance();
                 playerSystem.SetPlayer(&entity);
-            
-                // log the name of the entity so we know it was loaded
-                std::cout << "Entity: " << entityName << std::endl;
-                std::cout << "Meta Entity: " << metaEntityName << std::endl;
-                std::cout << "-------------------------------" << std::endl;
             }
 
             entityCount++;

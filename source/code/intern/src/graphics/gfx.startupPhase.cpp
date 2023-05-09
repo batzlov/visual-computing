@@ -29,8 +29,6 @@ namespace Gfx
             tinyxml2::XMLElement* xmlGraphicsElement = xmlMetaEntity->FirstChildElement("graphics");
             std::string textureName = xmlGraphicsElement->FirstChildElement("texture")->FindAttribute("value")->Value();
             std::string filePath = (Core::Config::texturesDir + textureName).c_str();
-
-            std::cout << filePath << std::endl;
             
             sf::Texture* texture = new sf::Texture();
             if(texture->loadFromFile(filePath)) 

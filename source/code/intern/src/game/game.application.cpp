@@ -30,6 +30,7 @@ namespace Game
     {
         // create the window
         window.create(sf::VideoMode(800, 600), "Visual Computing - Robert Ackermann");
+        window.setFramerateLimit(60);
 
         currentPhaseIndex = Phase::STARTUP;
         Phase* currentPhase = phases[currentPhaseIndex];
@@ -75,23 +76,19 @@ namespace Game
             break;
             case sf::Event::KeyPressed:
             {
-                // std::cout << "key pressed, key code: " << event.key.code << std::endl;
                 Logic::CommandSystem& commandSystem = Logic::CommandSystem::GetInstance();
                 Logic::Command& command = commandSystem.CreateCommand();
                 
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) 
                 {
-                    std::cout << "right" << std::endl;
                     command.SetType(Logic::MoveRight);
                 }
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
                 {
-                    std::cout << "left" << std::endl;
                     command.SetType(Logic::MoveLeft);
                 }
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
                 {
-                    std::cout << "space" << std::endl;
                     command.SetType(Logic::Jump);
                 }
                 else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))

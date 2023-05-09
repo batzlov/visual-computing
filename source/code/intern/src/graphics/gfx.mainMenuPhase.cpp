@@ -11,8 +11,6 @@ namespace Gfx
 {
     void MainMenuPhase::Initialize() 
     {
-        std::cout << "MainMenuPhase::Initialize()" << std::endl;
-
         Game::Application& app = Game::Application::GetInstance();
 
         std::string filePath;

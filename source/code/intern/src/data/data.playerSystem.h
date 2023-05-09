@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../core/core.vector.h"
+
 #include "data.entity.h"
 
 namespace Data 
@@ -20,8 +22,24 @@ namespace Data
             Entity* GetPlayer();
             void SetPlayer(Entity* player);
 
+        public:
+            void InitPhysics();
+            void UpdatePhysics();
+            void MovePlayer(const float directionX, const float directionY);
+            float velocityX;
+            float velocityY;
+            float maxVelocity;
+            float minVelocity;
+            float acceleration;
+            float drag;
+            float gravity;
+            float maxVelocityY;
+
+
         private:
-            PlayerSystem() {};
+            PlayerSystem() {
+                InitPhysics();
+            };
 
         private:
             Entity* player;
