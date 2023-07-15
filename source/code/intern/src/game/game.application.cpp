@@ -89,6 +89,7 @@ namespace Game
                 }
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
                 {
+                    std::cout << "jump" << std::endl;
                     command.SetType(Logic::Jump);
                 }
                 else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))

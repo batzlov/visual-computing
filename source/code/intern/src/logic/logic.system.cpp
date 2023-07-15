@@ -11,6 +11,17 @@ namespace Logic
     void System::OnTurn()
     {
         HandleCommands();
+
+        Data::PlayerSystem& playerSystem = Data::PlayerSystem::GetInstance();
+        Data::Entity* player = playerSystem.GetPlayer();
+
+        if(player != nullptr && player->position[1] < 450.0f) 
+        {
+            player->position[1] = player->position[1] + 10.f;
+            std::cout << "player position y: " << player->position[1] << std::endl;
+        
+            std::cout << "Player is in the air.." << std::endl;
+        }
     }
 
     void System::HandleCommands()
@@ -25,12 +36,14 @@ namespace Logic
             switch (command->GetType())
             {
                 case CommandType::MoveLeft:
-                    MovePlayer(Core::Float2(-1, 0));
+                    MovePlayer(Core::Float2(-10, 0));
                     break;
                 case CommandType::MoveRight:
-                    MovePlayer(Core::Float2(1, 0));
+                    std::cout << "Move right" << std::endl;
+                    MovePlayer(Core::Float2(10, 0));
                     break;
                 case CommandType::Jump:
+                    std::cout << "Jump" << std::endl;
                     MovePlayer(Core::Float2(0, -50));
                     break;
                 default:
@@ -48,8 +61,11 @@ namespace Logic
         
         if(player != nullptr) 
         {
-            playerSystem.UpdatePhysics();
-            playerSystem.MovePlayer(orientation[0], orientation[1]);
+            // playerSystem.UpdatePhysics();
+            // playerSystem.MovePlayer(orientation[0], orientation[1]);
+
+            player->position[0] += orientation[0];
+            player->position[1] += orientation[1];
         }
     }
 }
