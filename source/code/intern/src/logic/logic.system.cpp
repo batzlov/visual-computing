@@ -22,6 +22,8 @@ namespace Logic
         
             std::cout << "Player is in the air.." << std::endl;
         }
+
+        playerSystem.UpdatePhysics();
     }
 
     void System::HandleCommands()
@@ -62,10 +64,10 @@ namespace Logic
         if(player != nullptr) 
         {
             // playerSystem.UpdatePhysics();
-            // playerSystem.MovePlayer(orientation[0], orientation[1]);
+            playerSystem.MovePlayer(orientation[0], orientation[1]);
 
-            player->position[0] += orientation[0];
-            player->position[1] += orientation[1];
+            // player->position[0] += orientation[0];
+            // player->position[1] += orientation[1];
         }
     }
 }
