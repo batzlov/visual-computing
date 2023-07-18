@@ -7,6 +7,7 @@
 #include "game/game.application.h";
 #include "data/data.entity.h"
 #include "data/data.entitySystem.h"
+#include "data/data.playerSystem.h"
 
 namespace Gfx
 {
@@ -27,9 +28,15 @@ namespace Gfx
         bgSprite.setScale(0.5, 0.5);
         bgSprite.setTexture(bgTexture);
 
+        // get instance of player system
+        Data::PlayerSystem& playerSystem = Data::PlayerSystem::GetInstance();
+        Data::Entity* player = playerSystem.GetPlayer();
+
+        // set the background position to follow the player
+        bgSprite.setPosition(player->position[0] - 150, 0);
+
         app.window.draw(bgSprite);
         
-
         // get all entities we need to draw
         std::vector<Data::Entity*> entities = Data::EntitySystem::GetInstance().GetAll();
         for(auto entity : entities) 
@@ -45,23 +52,29 @@ namespace Gfx
             entitySprite.setPosition(entity->position[0], entity->position[1]);
 
             app.window.draw(entitySprite);
+
+            // update the view position and background position to follow the player
+            if (entity->metaEntity->name == "player")
+            {
+                float minBorderX = 150;
+                float maxBorderX = 950;
+
+                // if the player is moving out of the screen, then don't need to move the view
+                if (entity->position[0] < minBorderX || entity->position[0] > maxBorderX)
+                {
+                    continue;
+                }
+
+				sf::View view = app.window.getView();
+
+                float centerX = entity->position[0] + 250;
+                float centerY = entity->position[1] - 150;
+
+                view.setCenter(centerX, centerY);
+				
+				app.window.setView(view);
+			}
         }
-
-        /*  handle left or right arrow key is pressed
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-            {
-                sf::View view = app.window.getView();
-                view.move(25.0f, 0.0f);
-                app.window.setView(view);
-            }
-
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-            {
-                sf::View view = app.window.getView();
-                view.move(-25.0f, 0.0f);
-                app.window.setView(view);
-            }
-        */
 
         app.window.display();
     }

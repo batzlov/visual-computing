@@ -61,13 +61,30 @@ namespace Logic
         Data::PlayerSystem& playerSystem = Data::PlayerSystem::GetInstance();
         Data::Entity* player = playerSystem.GetPlayer();
         
-        if(player != nullptr) 
+        if(player == nullptr) 
         {
-            // playerSystem.UpdatePhysics();
-            playerSystem.MovePlayer(orientation[0], orientation[1]);
-
-            // player->position[0] += orientation[0];
-            // player->position[1] += orientation[1];
+            return;
         }
+
+        // limit movement of the player so it doesn't go out of the screen
+        float mapStartX = 0;
+        float mapEndX = 1500;
+
+        bool orientationXIsPositive = orientation[0] > 0;
+
+        // player moves left
+        if (player->position[0] <= mapStartX && !orientationXIsPositive)
+        {
+			return;
+		}
+
+        // player moves right
+        if (player->position[0] >= mapEndX && orientationXIsPositive)
+        {
+            return;
+        }
+
+        // playerSystem.UpdatePhysics();
+        playerSystem.MovePlayer(orientation[0], orientation[1]);
     }
 }
