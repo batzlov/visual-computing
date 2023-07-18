@@ -67,8 +67,8 @@ namespace Logic
         }
 
         // limit movement of the player so it doesn't go out of the screen
-        float mapStartX = 0;
-        float mapEndX = 1500;
+        float mapStartX = 25;
+        float mapEndX = 1525;
 
         bool orientationXIsPositive = orientation[0] > 0;
 

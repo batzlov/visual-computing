@@ -23,17 +23,14 @@ namespace Gfx
         std::string filePath = Core::Config::backgroundDirs + "beach.jpg";
         sf::Texture bgTexture;
         bgTexture.loadFromFile(filePath.c_str());
+        bgTexture.setRepeated(true);
 
-        sf::Sprite bgSprite;
-        bgSprite.setScale(0.5, 0.5);
-        bgSprite.setTexture(bgTexture);
-
-        // get instance of player system
-        Data::PlayerSystem& playerSystem = Data::PlayerSystem::GetInstance();
-        Data::Entity* player = playerSystem.GetPlayer();
-
-        // set the background position to follow the player
-        bgSprite.setPosition(player->position[0] - 150, 0);
+        sf::IntRect bounds(0, 0, 2000, 2000);
+        sf::Sprite bgSprite = sf::Sprite(bgTexture, bounds);
+        bgSprite.setPosition(
+            (float) bounds.left, 
+            (float) bounds.top - 1000.0f + app.GetInstance().window.getView().getSize().y
+        );
 
         app.window.draw(bgSprite);
         
