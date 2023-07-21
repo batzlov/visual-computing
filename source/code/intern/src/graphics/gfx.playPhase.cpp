@@ -4,7 +4,7 @@
 
 #include "gfx.playPhase.h"
 #include "core/core.config.h"
-#include "game/game.application.h";
+#include "game/game.application.h"
 #include "data/data.entity.h"
 #include "data/data.entitySystem.h"
 #include "data/data.playerSystem.h"

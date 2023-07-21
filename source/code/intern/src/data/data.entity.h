@@ -3,7 +3,7 @@
 
 #include "data.entityLink.h"
 #include "data.metaEntity.h"
-#include "../core/core.vector2.h";
+#include "../core/core.vector2.h"
 
 #include <array>
 

@@ -1,16 +1,9 @@
 #pragma once
 
+#include "../data/data.commandAction.h"
+
 namespace Logic 
 {
-    enum CommandType 
-    {
-        MoveLeft,
-        MoveRight,
-        Jump,
-        NumberOfTypes,
-        Undefined = -1
-    };
-
     class Command 
     {
         public:
@@ -18,10 +11,10 @@ namespace Logic
             ~Command();
 
         public:
-            CommandType GetType() const;
-            void SetType(CommandType type);
+            Data::CommandAction::Enum GetType() const;
+            void SetType(Data::CommandAction::Enum type);
 
         private:
-            CommandType type;
+            Data::CommandAction::Enum type;
     };
 }

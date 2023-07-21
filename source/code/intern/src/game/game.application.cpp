@@ -11,6 +11,7 @@
 #include "game.unloadPhase.h"
 #include "game.shutdownPhase.h"
 
+#include "data/data.eventSystem.h"
 #include "logic/logic.commandSystem.h"
 
 namespace Game 
@@ -76,28 +77,7 @@ namespace Game
             break;
             case sf::Event::KeyPressed:
             {
-                Logic::CommandSystem& commandSystem = Logic::CommandSystem::GetInstance();
-                Logic::Command& command = commandSystem.CreateCommand();
-                
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) 
-                {
-                    command.SetType(Logic::MoveRight);
-                }
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-                {
-                    command.SetType(Logic::MoveLeft);
-                }
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-                {
-                    std::cout << "jump" << std::endl;
-                    command.SetType(Logic::Jump);
-                }
-                else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-                {
-                    // handle escape
-                }
-
-                commandSystem.AddCommand(command);
+                Data::EventSystem::GetInstance().FireEvent(Data::EventType::DispatchEventToInput, event.key.code);
             }
             break;
             case sf::Event::Closed: 
