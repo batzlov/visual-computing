@@ -50,8 +50,6 @@ namespace Game
 
     void MainMenuPhase::OnStart(Data::Event& /* event */)
     {
-        std::cout << "Enter pressed" << std::endl;
-
         MainMenuPhase::GetInstance().nextRunPhase = Phase::LOAD_MAP;
     }
 

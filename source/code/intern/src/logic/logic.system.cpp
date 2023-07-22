@@ -18,9 +18,6 @@ namespace Logic
         if(player != nullptr && player->position[1] < 450.0f) 
         {
             player->position[1] = player->position[1] + 10.f;
-            std::cout << "player position y: " << player->position[1] << std::endl;
-        
-            std::cout << "Player is in the air.." << std::endl;
         }
 
         playerSystem.UpdatePhysics();
@@ -48,19 +45,6 @@ namespace Logic
 				case Data::CommandAction::Jump:
 					MovePlayer(Core::Float2(0, -50));
                     break;
-                /*
-                    case CommandType::MoveLeft:
-                        MovePlayer(Core::Float2(-10, 0));
-                        break;
-                    case CommandType::MoveRight:
-                        std::cout << "Move right" << std::endl;
-                        MovePlayer(Core::Float2(10, 0));
-                        break;
-                    case CommandType::Jump:
-                        std::cout << "Jump" << std::endl;
-                        MovePlayer(Core::Float2(0, -50));
-                        break;
-                */
 
                 default:
                     break;
