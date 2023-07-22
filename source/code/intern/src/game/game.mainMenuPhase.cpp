@@ -13,8 +13,10 @@ namespace Game
     {
         nextRunPhase = Type::MAIN_MENU;
 
-        Data::EventSystem::GetInstance().Register(Data::EventType::PressedEnter, &MainMenuPhase::OnStart);
+        Data::EventSystem::GetInstance().Register(Data::EventType::PressedEnter, &MainMenuPhase::OnEnter);
         Data::EventSystem::GetInstance().Register(Data::EventType::PressedEscape, &MainMenuPhase::OnExit);
+        Data::EventSystem::GetInstance().Register(Data::EventType::PressedUp, &MainMenuPhase::OnUpOrDown);
+        Data::EventSystem::GetInstance().Register(Data::EventType::PressedDown, &MainMenuPhase::OnUpOrDown);
 
         Data::MainMenuPhase::GetInstance().OnEnter();
         Gfx::MainMenuPhase::GetInstance().OnEnter();
@@ -34,8 +36,10 @@ namespace Game
 
     int MainMenuPhase::InternOnLeave() 
     {
-        Data::EventSystem::GetInstance().Unregister(Data::EventType::PressedEnter, &MainMenuPhase::OnStart);
+        Data::EventSystem::GetInstance().Unregister(Data::EventType::PressedEnter, &MainMenuPhase::OnEnter);
         Data::EventSystem::GetInstance().Unregister(Data::EventType::PressedEscape, &MainMenuPhase::OnExit);
+        Data::EventSystem::GetInstance().Unregister(Data::EventType::PressedUp, &MainMenuPhase::OnUpOrDown);
+        Data::EventSystem::GetInstance().Unregister(Data::EventType::PressedDown, &MainMenuPhase::OnUpOrDown);
 
         Data::MainMenuPhase::GetInstance().OnLeave();
         Gfx::MainMenuPhase::GetInstance().OnLeave();
@@ -47,8 +51,37 @@ namespace Game
     void MainMenuPhase::OnStart(Data::Event& /* event */)
     {
         std::cout << "Enter pressed" << std::endl;
+
         MainMenuPhase::GetInstance().nextRunPhase = Phase::LOAD_MAP;
     }
+
+    void MainMenuPhase::OnEnter(Data::Event& /* event */)
+    {
+        Gui::SelectedMenuLabel selectedLabel = Gui::MainMenuPhase::GetInstance().GetSelectedMenuLabel();
+        
+        if(selectedLabel == Gui::SelectedMenuLabel::PLAY) 
+        {
+            MainMenuPhase::GetInstance().nextRunPhase = Phase::LOAD_MAP;
+        }
+        else if (selectedLabel == Gui::SelectedMenuLabel::EXIT)
+        {
+			MainMenuPhase::GetInstance().nextRunPhase = Phase::SHUTDOWN;
+		}
+	}
+
+    void MainMenuPhase::OnUpOrDown(Data::Event& /* event */)
+    {
+        auto selectedLabel = Gui::MainMenuPhase::GetInstance().GetSelectedMenuLabel();
+
+        if (selectedLabel == Gui::SelectedMenuLabel::PLAY)
+        {
+			Gui::MainMenuPhase::GetInstance().SetSelectedMenuLabel(Gui::SelectedMenuLabel::EXIT);
+		}
+        else if (selectedLabel == Gui::SelectedMenuLabel::EXIT)
+        {
+			Gui::MainMenuPhase::GetInstance().SetSelectedMenuLabel(Gui::SelectedMenuLabel::PLAY);
+		}
+	}
 
     void MainMenuPhase::OnExit(Data::Event& /* event */)
     {

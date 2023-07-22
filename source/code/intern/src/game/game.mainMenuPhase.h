@@ -20,6 +20,8 @@ namespace Game
         // event callbacks
         public:
             static void OnStart(Data::Event& event);
+            static void OnEnter(Data::Event& event);
+            static void OnUpOrDown(Data::Event& event);
             static void OnExit(Data::Event& event);
 
         private:

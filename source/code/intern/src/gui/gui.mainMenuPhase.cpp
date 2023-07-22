@@ -18,24 +18,6 @@ namespace Gui
     int MainMenuPhase::OnRun() 
     {
         InputSystem::GetInstance().OnRun();
-
-        // TODO: move these to the input system
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) 
-        {
-            selectedMenuLabel = SelectedMenuLabel::PLAY;
-        }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) 
-        {
-            selectedMenuLabel = SelectedMenuLabel::EXIT;
-        }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && selectedMenuLabel == SelectedMenuLabel::PLAY)
-        {
-            return 1;
-        }
-        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && selectedMenuLabel == SelectedMenuLabel::EXIT) 
-        {
-            return -1;
-        }
         
         return 0;
     }
@@ -46,4 +28,9 @@ namespace Gui
     {
         return selectedMenuLabel;
     }
+
+    void MainMenuPhase::SetSelectedMenuLabel(SelectedMenuLabel selectedMenuLabel)
+    {
+		this->selectedMenuLabel = selectedMenuLabel;
+	}
 }

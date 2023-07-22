@@ -48,7 +48,15 @@ namespace Gui
         {
             current = GetNextInput();
 
-            if (current.key.code == sf::Keyboard::Key::Escape)
+            if (current.key.code == sf::Keyboard::Key::Up)
+            {
+                Data::EventSystem::GetInstance().FireEvent(Data::EventType::PressedUp);
+            }
+            else if (current.key.code == sf::Keyboard::Key::Down)
+            {
+				Data::EventSystem::GetInstance().FireEvent(Data::EventType::PressedDown);
+			}
+            else if (current.key.code == sf::Keyboard::Key::Escape)
             {
                 Data::EventSystem::GetInstance().FireEvent(Data::EventType::PressedEscape);
             }

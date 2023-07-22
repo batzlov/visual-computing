@@ -27,6 +27,7 @@ namespace Gui
             void OnLeave();
 
             SelectedMenuLabel GetSelectedMenuLabel();
+            void SetSelectedMenuLabel(SelectedMenuLabel selectedMenuLabel);
 
         private:
             MainMenuPhase();

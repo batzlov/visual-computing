@@ -13,6 +13,8 @@ namespace Data
 
             PressedEscape,
             PressedEnter,
+            PressedUp,
+            PressedDown,
 
             NumberOfEventTypes,
             Undefined = -1
