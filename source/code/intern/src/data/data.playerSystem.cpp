@@ -65,7 +65,7 @@ namespace Data
 
         this->player->position = Core::Float2(
             this->player->position[0] + this->velocityX,
-            this->player->position[1]
+            this->player->position[1] + directionY
             // this->player->position[1] - this->velocityY
         );
     }

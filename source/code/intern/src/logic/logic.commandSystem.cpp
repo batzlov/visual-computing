@@ -32,4 +32,13 @@ namespace Logic
     {
         return commandQueue.empty();
     }
+
+    void CommandSystem::DispatchInputToLogic(Data::Event& event)
+    {
+        Command& command = *(new Command());
+
+        command.SetType(Data::CommandAction::Enum(event.GetData()));
+
+        CommandSystem::GetInstance().AddCommand(command);
+	}
 }

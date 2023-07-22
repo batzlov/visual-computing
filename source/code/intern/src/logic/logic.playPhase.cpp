@@ -1,11 +1,16 @@
 #include "logic.playPhase.h"
 #include "logic.system.h"
+#include "logic.commandSystem.h"
 
 #include "../core/core.time.h"
+#include "../data/data.eventSystem.h"
 
 namespace Logic 
 {
-    void PlayPhase::OnEnter() {}
+    void PlayPhase::OnEnter() 
+    {
+        Data::EventSystem::GetInstance().Register(Data::EventType::DispatchInputToCommand, &CommandSystem::DispatchInputToLogic);
+    }
 
     void PlayPhase::OnRun() 
     {
@@ -17,5 +22,10 @@ namespace Logic
         }
     }
 
-    void PlayPhase::OnLeave() {}
+    void PlayPhase::OnLeave() 
+    {
+        Data::EventSystem::GetInstance().Unregister(Data::EventType::DispatchInputToCommand, &CommandSystem::DispatchInputToLogic);
+
+        nextTurnTime = 0.0;
+    }
 }

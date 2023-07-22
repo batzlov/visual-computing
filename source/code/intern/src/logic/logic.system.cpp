@@ -37,6 +37,17 @@ namespace Logic
 
             switch (command->GetType())
             {
+                case Data::CommandAction::MoveLeft:
+					MovePlayer(Core::Float2(-10, 0));
+					break;
+
+                case Data::CommandAction::MoveRight:
+                    MovePlayer(Core::Float2(10, 0));
+					break;
+
+				case Data::CommandAction::Jump:
+					MovePlayer(Core::Float2(0, -50));
+                    break;
                 /*
                     case CommandType::MoveLeft:
                         MovePlayer(Core::Float2(-10, 0));

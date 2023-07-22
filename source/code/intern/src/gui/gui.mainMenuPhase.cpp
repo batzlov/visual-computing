@@ -1,4 +1,8 @@
 #include "gui.mainMenuPhase.h"
+#include "gui.inputSystem.h"
+
+#include "data/data.eventType.h"
+#include "data/data.eventSystem.h"
 
 #include <SFML/Window/Keyboard.hpp>
 
@@ -13,6 +17,9 @@ namespace Gui
 
     int MainMenuPhase::OnRun() 
     {
+        InputSystem::GetInstance().OnRun();
+
+        // TODO: move these to the input system
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) 
         {
             selectedMenuLabel = SelectedMenuLabel::PLAY;

@@ -1,5 +1,7 @@
 #pragma once
+
 #include "game.phase.h"
+#include <data/data.event.h>
 
 namespace Game
 {
@@ -15,8 +17,15 @@ namespace Game
             MainMenuPhase(MainMenuPhase const&) = delete;
             MainMenuPhase& operator=(MainMenuPhase const&) = delete;
 
+        // event callbacks
+        public:
+            static void OnStart(Data::Event& event);
+            static void OnExit(Data::Event& event);
+
         private:
             MainMenuPhase() {};
+
+            Phase::Type nextRunPhase;
 
         private:
             int InternOnEnter() override;

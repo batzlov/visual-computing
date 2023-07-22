@@ -1,4 +1,7 @@
 #include "gui.shutdownPhase.h"
+#include "gui.inputSystem.h"
+
+#include "data/data.eventSystem.h"
 
 namespace Gui 
 {
@@ -6,5 +9,8 @@ namespace Gui
 
     void ShutdownPhase::OnRun() {}
 
-    void ShutdownPhase::OnLeave() {}
+    void ShutdownPhase::OnLeave() 
+    {
+        Data::EventSystem::GetInstance().Unregister(Data::EventType::DispatchEventToInput,  &InputSystem::GetInstance().DispatchEventToInput);
+    }
 }

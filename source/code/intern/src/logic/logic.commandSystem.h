@@ -3,6 +3,7 @@
 #include <queue>
 
 #include "logic.command.h"
+#include "../data/data.event.h"
 
 namespace Logic 
 {
@@ -26,6 +27,9 @@ namespace Logic
             Command& GetNextInQueue();
             void RemoveNextInQueue();
             bool CommandQueueIsEmpty() const;
+
+            // event callbacks
+            static void DispatchInputToLogic(Data::Event& event);
 
         private:
             CommandSystem() {}
