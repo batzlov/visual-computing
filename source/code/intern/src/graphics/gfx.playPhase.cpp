@@ -45,7 +45,6 @@ namespace Gfx
             entityTexture = static_cast<sf::Texture*>(entity->metaEntity->facets[0]);
 
             entitySprite.setTexture(*entityTexture);
-            entitySprite.setScale(0.25, 0.25);
             entitySprite.setPosition(entity->position[0], entity->position[1]);
 
             app.window.draw(entitySprite);

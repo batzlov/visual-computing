@@ -23,7 +23,7 @@ namespace Logic
             PlayPhase() {};
 
         private:
-            static const unsigned int turnsPerSecond = 60;
+            static const unsigned int turnsPerSecond = 15;
             const double turnInterval = 1.0 / turnsPerSecond;
             double nextTurnTime;
     };

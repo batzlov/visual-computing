@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <cassert>
+#include <unordered_map>
 
 #include "game.application.h"
 #include "game.phase.h"
@@ -41,6 +42,8 @@ namespace Game
 
     void Application::Run()
     {
+        std::unordered_map<int, bool> pressedKeys;
+        
         // game loop
         for (;;) 
         {
@@ -52,8 +55,30 @@ namespace Game
             sf::Event event;
             while (window.pollEvent(event))
             {
-                std::cout << "Event is polled.." << std::endl;
-                HandleEvent(event);
+                if (event.type == sf::Event::Closed)
+                {
+                    window.close();
+                }
+
+                // if the key is pressed, and it is not already in the map, add it
+                if (event.type == sf::Event::KeyPressed && pressedKeys.count(event.key.code) == 0)
+				{
+					pressedKeys[event.key.code] = true;
+				}
+
+                // if the key is released, and it is in the map, remove it
+                if (event.type == sf::Event::KeyReleased && pressedKeys.count(event.key.code) == 1)
+                {
+                    pressedKeys.erase(event.key.code);
+                }
+
+                // FIXME: this is not working as expected and should be removed in the future
+                // HandleEvent(event);
+            }
+
+            for (auto& key : pressedKeys)
+            {
+                Data::EventSystem::GetInstance().FireEvent(Data::EventType::DispatchEventToInput, key.first);
             }
 
             // exit if the lifecycle ended
