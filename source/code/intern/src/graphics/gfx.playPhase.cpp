@@ -62,10 +62,12 @@ namespace Gfx
                     continue;
                 }
 
-				sf::View view = app.window.getView();
-
+                // FIXME: check if the player distance to the right or left border is less than 100px, then move the view
+                sf::View view = app.window.getView();
+               
                 float centerX = entity->position[0] + 250;
-                float centerY = entity->position[1] - 150;
+                float centerY = view.getCenter().y;
+                // float centerY = entity->position[1] - 150;
 
                 view.setCenter(centerX, centerY);
 				

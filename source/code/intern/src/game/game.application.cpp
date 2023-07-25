@@ -52,6 +52,7 @@ namespace Game
             sf::Event event;
             while (window.pollEvent(event))
             {
+                std::cout << "Event is polled.." << std::endl;
                 HandleEvent(event);
             }
 
@@ -67,30 +68,53 @@ namespace Game
 
     void Application::HandleEvent(sf::Event event)
     {
-        switch (event.type)
+        std::cout << "Handle event is called.." << std::endl;
+
+        if(event.type == sf::Event::Closed)
+		{
+			window.close();
+		}
+
+        if (event.type == sf::Event::KeyPressed)
         {
-            case sf::Event::Resized:
-            {
-                // update the view to the new size of the window
-                sf::FloatRect visibleArea(0, 0, (float) event.size.width, (float) event.size.height);
-            }
-            break;
-            case sf::Event::KeyPressed:
-            {
-                Data::EventSystem::GetInstance().FireEvent(Data::EventType::DispatchEventToInput, event.key.code);
-            }
-            break;
-            case sf::Event::Closed: 
-            {
-                window.close();
-            }
-            break;
-            default:
-            {
-                // TODO: check if we need to handle other events
-            }
-            break;
+            Data::EventSystem::GetInstance().FireEvent(Data::EventType::DispatchEventToInput, event.key.code);
         }
+
+        if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Space)
+        {
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+            {
+                Data::EventSystem::GetInstance().FireEvent(Data::EventType::DispatchEventToInput, sf::Keyboard::Left);
+            }
+
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+			{
+                Data::EventSystem::GetInstance().FireEvent(Data::EventType::DispatchEventToInput, sf::Keyboard::Right);
+			}
+        }
+
+        /*
+            switch (event.type)
+            {
+                case sf::Event::Resized:
+                    // update the view to the new size of the window
+                    // sf::FloatRect visibleArea(0, 0, (float) event.size.width, (float) event.size.height);
+                break;
+
+                case sf::Event::KeyPressed:
+                    Data::EventSystem::GetInstance().FireEvent(Data::EventType::DispatchEventToInput, event.key.code);
+                break;
+
+
+                case sf::Event::Closed: 
+                    window.close();
+                break;
+
+                default:
+                    std::cout << "default event case" << event.type << std::endl;
+                break;
+            }
+        */
     }
 
     HandlePhaseChangeResult Application::HandlePhaseChange()

@@ -19,8 +19,9 @@ namespace Logic
         {
             player->position[1] = player->position[1] + 10.f;
         }
-
-        playerSystem.UpdatePhysics();
+        
+        
+        // playerSystem.UpdatePhysics();
     }
 
     void System::HandleCommands()
@@ -38,9 +39,17 @@ namespace Logic
 					MovePlayer(Core::Float2(-10, 0));
 					break;
 
+                case Data::CommandAction::MoveLeftAndJump:
+                    MovePlayer(Core::Float2(-10, -50));
+					break;
+
                 case Data::CommandAction::MoveRight:
                     MovePlayer(Core::Float2(10, 0));
 					break;
+
+                case Data::CommandAction::MoveRightAndJump:
+					MovePlayer(Core::Float2(10, -50));
+                break;
 
 				case Data::CommandAction::Jump:
 					MovePlayer(Core::Float2(0, -50));
