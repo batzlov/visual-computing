@@ -66,20 +66,14 @@ namespace Gui
             }
             else if (current.key.code == sf::Keyboard::Key::Space && sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
             {
-                std::cout << "Right and space was pressed.." << std::endl;
-
                 Data::EventSystem::GetInstance().FireEvent(Data::EventType::DispatchInputToCommand, Data::CommandAction::MoveRightAndJump);
             }
 			else if (current.key.code == sf::Keyboard::Key::Space && sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
 			{
-                std::cout << "Left and space was pressed.." << std::endl;
-
                 Data::EventSystem::GetInstance().FireEvent(Data::EventType::DispatchInputToCommand, Data::CommandAction::MoveLeftAndJump);
 			}
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
 			{
-                std::cout << "Move right" << std::endl;
-
 				Data::EventSystem::GetInstance().FireEvent(Data::EventType::DispatchInputToCommand, Data::CommandAction::MoveRight);
 			}
 			else if (current.key.code == sf::Keyboard::Key::Left)
@@ -90,10 +84,6 @@ namespace Gui
 			{
 				Data::EventSystem::GetInstance().FireEvent(Data::EventType::DispatchInputToCommand, Data::CommandAction::Jump);
 			}
-            else
-            {
-                std::cout << "Unknown key was pressed.." << std::endl;
-            }
 
             RemoveNextInput();
         }
