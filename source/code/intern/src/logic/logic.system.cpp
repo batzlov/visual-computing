@@ -5,6 +5,7 @@
 #include "logic.commandSystem.h"
 
 #include "../data/data.playerSystem.h"
+#include "../data/data.entitySystem.h"
 
 namespace Logic 
 {
@@ -15,10 +16,14 @@ namespace Logic
         Data::PlayerSystem& playerSystem = Data::PlayerSystem::GetInstance();
         Data::Entity* player = playerSystem.GetPlayer();
 
-        if(player != nullptr && player->position[1] < 450.0f) 
-        {
-            player->position[1] = player->position[1] + 50.0f;
-        }
+        CheckPlayerIsWalkingOnGround();
+
+        /*
+            if (!PlayerIsWalkingOnGround())
+            {
+                player->position[1] = player->position[1] + 50.0f;
+            }
+        */
         
         // playerSystem.UpdatePhysics();
     }
@@ -93,4 +98,35 @@ namespace Logic
         // playerSystem.UpdatePhysics();
         playerSystem.MovePlayer(orientation[0], orientation[1]);
     }
+
+    bool System::CheckPlayerIsWalkingOnGround()
+    {
+        bool isWalkingOnGround = false;
+
+		Data::PlayerSystem& playerSystem = Data::PlayerSystem::GetInstance();
+		Data::Entity* player = playerSystem.GetPlayer();
+
+        // compare two float values
+        auto compareFloats = [](float a, float b) -> bool
+        {
+			float epsilon = 0.0001f;
+			return std::abs(a - b) < epsilon;
+		};
+
+        if (compareFloats(player->position[1], 450.0f))
+        {
+			isWalkingOnGround = true;
+            return isWalkingOnGround;
+        }
+
+        Data::EntitySystem& entitySystem = Data::EntitySystem::GetInstance();
+        auto entities = entitySystem.GetAll();
+
+        for (auto entity : entities)
+        {
+            // check if there is a platform under the player
+        }
+
+		return isWalkingOnGround;
+	}
 }

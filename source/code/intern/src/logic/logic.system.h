@@ -25,6 +25,8 @@ namespace Logic
             void HandleCommands();
             void MovePlayer(Core::Float2 orientation);
 
+            bool CheckPlayerIsWalkingOnGround();
+
 
         private:
             System() {};
