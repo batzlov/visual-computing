@@ -30,6 +30,8 @@ namespace Data
 
         public:
             Core::CVector2<float> position;
+            Core::CVector2<float> size;
+            Core::CAABB2<float> aabb;
             MetaEntity* metaEntity;
 
         private:

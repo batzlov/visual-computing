@@ -3,6 +3,7 @@
     <meta-entity name="player">
         <data>
             <size value="1" />
+            <aabb minCorner="0.0;0.0" maxCorner="50.0;50.0"></aabb>
         </data>
         <logic></logic>
         <graphics>
@@ -12,6 +13,7 @@
     <meta-entity name="ground_earth">
         <data>
             <size value="1" />
+            <aabb minCorner="0.0;0.0" maxCorner="50.0;50.0"></aabb>
         </data>
         <logic></logic>
         <graphics>
@@ -21,6 +23,7 @@
     <meta-entity name="ground">
         <data>
             <size value="1" />
+            <aabb minCorner="0.0;0.0" maxCorner="50.0;50.0"></aabb>
         </data>
         <logic></logic>
         <graphics>
@@ -30,6 +33,7 @@
     <meta-entity name="plattform_1">
         <data>
             <size value="1" />
+            <aabb minCorner="0.0;0.0" maxCorner="50.0;50.0"></aabb>
         </data>
         <logic></logic>
         <graphics>
@@ -39,6 +43,7 @@
     <meta-entity name="plattform_2">
         <data>
             <size value="1" />
+            <aabb minCorner="0.0;0.0" maxCorner="50.0;50.0"></aabb>
         </data>
         <logic></logic>
         <graphics>
@@ -48,6 +53,7 @@
     <meta-entity name="plattform_3">
         <data>
             <size value="1" />
+            <aabb minCorner="0.0;0.0" maxCorner="50.0;50.0"></aabb>
         </data>
         <logic></logic>
         <graphics>

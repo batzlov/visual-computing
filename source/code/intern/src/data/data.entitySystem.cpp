@@ -7,6 +7,8 @@
 #include "data.metaEntitySystem.h"
 #include "data.playerSystem.h"
 
+#include "../core/core.explode.h"
+
 namespace Data 
 {
     int EntitySystem::Initialize(tinyxml2::XMLDocument& document)
@@ -26,7 +28,7 @@ namespace Data
             auto metaEntityId = metaEntitySystem.GetMetaEntityId(metaEntityName);
             Data::MetaEntity& metaEntity = metaEntitySystem.GetMetaEntityById(metaEntityId);
 
-            auto positionFloatStrings = this->Explode(
+            auto positionFloatStrings = Core::Explode(
                 xmlEntity
                 ->FirstChildElement("data")
                 ->FirstChildElement("position")
@@ -34,14 +36,33 @@ namespace Data
                 ->Value(),
                 ';'
             );
+            auto sizeFloatStrings = Core::Explode(
+				xmlEntity
+				->FirstChildElement("data")
+				->FirstChildElement("size")
+				->FirstChild()
+				->Value(),
+				';'
+			);
 
             auto entityId = idManager.Register(entityName);
             Entity& entity = itemManager.CreateItem(entityId);
             entity.metaEntity = &metaEntity;
+            
             entity.position = Core::Float2(
                 std::stof(positionFloatStrings[0]),
                 std::stof(positionFloatStrings[1])
             );
+
+            entity.size = Core::Float2(
+				std::stof(sizeFloatStrings[0]),
+				std::stof(sizeFloatStrings[1])
+			);
+
+            entity.aabb = Core::AABB2Float(
+				Core::Float2(entity.position[0], entity.position[1]),
+                Core::Float2(entity.position[0] + entity.size[0], entity.position[1] + entity.size[1])
+			);
 
             // handle the player entity seperately
             if (entity.metaEntity->name == "player")
@@ -56,20 +77,6 @@ namespace Data
         }
 
         return entityCount;
-    }
-
-    std::vector<std::string> EntitySystem::Explode(std::string string, const char& delimiter) 
-    {
-        std::string tmpSubString;
-        std::stringstream ss(string);
-        std::vector<std::string> subStrings;
-
-        while (getline(ss, tmpSubString, delimiter))
-        {
-            subStrings.push_back(tmpSubString);
-        }
-
-        return subStrings;
     }
 
     std::vector<Data::Entity*> EntitySystem::GetAll()

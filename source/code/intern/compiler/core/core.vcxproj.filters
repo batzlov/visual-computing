@@ -102,6 +102,9 @@
     <ClInclude Include="..\..\src\core\core.config.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\core\core.explode.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\core\core.idManager.cpp">
