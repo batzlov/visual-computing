@@ -6,52 +6,52 @@
         </data>
         <logic></logic>
         <graphics>
-            <texture value="block-paper.png" />
+            <texture value="player.png" />
         </graphics>
     </meta-entity>
-    <meta-entity name="block_brick">
+    <meta-entity name="ground_earth">
         <data>
             <size value="1" />
         </data>
         <logic></logic>
         <graphics>
-            <texture value="block-brick.png" />
+            <texture value="ground-earth.png" />
         </graphics>
     </meta-entity>
-    <meta-entity name="block_clay">
+    <meta-entity name="ground">
         <data>
             <size value="1" />
         </data>
         <logic></logic>
         <graphics>
-            <texture value="block-clay.png" />
+            <texture value="ground.png" />
         </graphics>
     </meta-entity>
-    <meta-entity name="block_abstract_1">
+    <meta-entity name="plattform_1">
         <data>
             <size value="1" />
         </data>
         <logic></logic>
         <graphics>
-            <texture value="block-abstract-1.png" />
+            <texture value="plattform-1.png" />
         </graphics>
     </meta-entity>
-    <meta-entity name="block_abstract_2">
+    <meta-entity name="plattform_2">
         <data>
             <size value="1" />
         </data>
         <logic></logic>
         <graphics>
-            <texture value="block-abstract-2.png" />
+            <texture value="plattform-2.png" />
         </graphics>
     </meta-entity>
-    <meta-entity name="block_abstract_3">
+    <meta-entity name="plattform_3">
         <data>
             <size value="1" />
         </data>
         <logic></logic>
         <graphics>
-            <texture value="block-abstract-3.png" />
+            <texture value="plattform-3.png" />
         </graphics>
     </meta-entity>
 </meta-entities>
