@@ -28,7 +28,7 @@ namespace Game
 
         XMLDocument* document = new XMLDocument();
         // std::string filePath = Core::Config::levelsDir + "level-1.xml";
-        std::string filePath = Core::Config::levelsDir + "level-experimental.xml";
+        std::string filePath = Core::Config::levelsDir + "level-experimental-1.xml";
         document->LoadFile(filePath.c_str());
 
         Data::LoadPhase::GetInstance().OnRun(*document);

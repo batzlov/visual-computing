@@ -1,4 +1,10 @@
 <entities>
+    <entity name="player" meta-entity="player">
+        <data>
+            <position>150;450</position>
+        </data>
+        <logic/>
+    </entity>
     <entity name="plattform_1_20_6" meta-entity="plattform_1">
         <data>
             <position>1000;300</position>

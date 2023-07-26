@@ -20,16 +20,16 @@ namespace Gfx
         // TODO: clear the window and draw the background image, next we need to get all entities and draw them on the screen
         app.window.clear(sf::Color::Black);
 
-        std::string filePath = Core::Config::backgroundDirs + "beach.jpg";
+        std::string filePath = Core::Config::backgroundDirs + "background.png";
         sf::Texture bgTexture;
         bgTexture.loadFromFile(filePath.c_str());
         bgTexture.setRepeated(true);
-
-        sf::IntRect bounds(0, 0, 2000, 2000);
+        
+        sf::IntRect bounds(0, 0, 1600, 1600);
         sf::Sprite bgSprite = sf::Sprite(bgTexture, bounds);
         bgSprite.setPosition(
             (float) bounds.left, 
-            (float) bounds.top - 1000.0f + app.GetInstance().window.getView().getSize().y
+            (float) bounds.top - 700.0f + app.GetInstance().window.getView().getSize().y
         );
 
         app.window.draw(bgSprite);
