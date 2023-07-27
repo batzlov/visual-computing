@@ -34,6 +34,7 @@
     <ClInclude Include="..\..\src\core\core.config.h" />
     <ClInclude Include="..\..\src\core\core.constants.h" />
     <ClInclude Include="..\..\src\core\core.explode.h" />
+    <ClInclude Include="..\..\src\core\core.floatCompare.h" />
     <ClInclude Include="..\..\src\core\core.idManager.h" />
     <ClInclude Include="..\..\src\core\core.itemManager.h" />
     <ClInclude Include="..\..\src\core\core.iterator.h" />

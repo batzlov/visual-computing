@@ -27,6 +27,16 @@ namespace Data
         this->maxVelocityY = 15.0f;
     }
 
+    void PlayerSystem::SetLooksRight(bool looksRight)
+    {
+		this->looksRight = looksRight;
+	}
+
+    bool PlayerSystem::GetLooksRight()
+    {
+        return this->looksRight;
+    }
+
     void PlayerSystem::UpdatePhysics() 
     {
         // gravity

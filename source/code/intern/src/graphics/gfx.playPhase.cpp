@@ -36,6 +36,7 @@ namespace Gfx
         
         // get all entities we need to draw
         std::vector<Data::Entity*> entities = Data::EntitySystem::GetInstance().GetAll();
+        Data::PlayerSystem& playerSystem = Data::PlayerSystem::GetInstance();
         for(auto entity : entities) 
         {
             std::string filePath;
@@ -46,6 +47,22 @@ namespace Gfx
 
             entitySprite.setTexture(*entityTexture);
             entitySprite.setPosition(entity->position[0], entity->position[1]);
+
+            // FIXME: error
+            bool changePlayerDirection = false;
+            if (changePlayerDirection)
+            {
+                if (entity->metaEntity->name == "player" && !playerSystem.GetLooksRight())
+                {
+                    entitySprite.setOrigin({ entitySprite.getLocalBounds().width / 2, 0 });
+                    entitySprite.setScale(-1, 1);
+                }
+                else if (entity->metaEntity->name == "player" && playerSystem.GetLooksRight())
+                {
+                    entitySprite.setOrigin({ entitySprite.getLocalBounds().width / 2, 0 });
+                    entitySprite.setScale(1, 1);
+                }
+            }
 
             app.window.draw(entitySprite);
 

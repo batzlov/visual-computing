@@ -4,6 +4,8 @@
 #include "logic.command.h"
 #include "logic.commandSystem.h"
 
+#include "../core/core.floatCompare.h"
+
 #include "../data/data.playerSystem.h"
 #include "../data/data.entitySystem.h"
 
@@ -83,7 +85,12 @@ namespace Logic
         float mapStartX = 25;
         float mapEndX = 1525;
 
-        bool orientationXIsPositive = orientation[0] > 0;
+        bool orientationXIsPositive = orientation[0] >= 0;
+
+        // set the orientation of the player and draw the sprite accordingly
+        // change the orientation only if it has changed
+        bool looksRight = Core::FloatCompare(0.0f, orientation[0]) == false ? orientationXIsPositive : playerSystem.GetLooksRight();
+        playerSystem.SetLooksRight(looksRight);
 
         // player moves left
         if (player->position[0] <= mapStartX && !orientationXIsPositive)
@@ -146,7 +153,7 @@ namespace Logic
             float entityTop = entity->aabb.GetMin()[1];
                 
             if (
-                floatCompare(playerBottom, entityTop) &&
+                Core::FloatCompare(playerBottom, entityTop) &&
                 player->aabb.GetCenter()[0] >= entity->aabb.GetMin()[0] &&
                 player->aabb.GetCenter()[0] <= entity->aabb.GetMax()[0]
             ) 

@@ -21,6 +21,9 @@ namespace Data
         public:
             Entity* GetPlayer();
             void SetPlayer(Entity* player);
+            
+            void SetLooksRight(bool looksRight);
+            bool GetLooksRight();
 
         public:
             void InitPhysics();
@@ -35,13 +38,15 @@ namespace Data
             float gravity;
             float maxVelocityY;
 
-
         private:
-            PlayerSystem() {
+            PlayerSystem()
+                : looksRight(true)
+            {
                 InitPhysics();
             };
 
         private:
+            bool looksRight;
             Entity* player;
     };
 }
