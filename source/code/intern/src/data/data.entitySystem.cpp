@@ -2,6 +2,7 @@
 #include <tinyxml2.h>
 #include <string>
 #include <sstream>
+#include <algorithm>
 
 #include "data.entitySystem.h"
 #include "data.metaEntitySystem.h"
@@ -83,4 +84,20 @@ namespace Data
     {
         return itemManager.GetAll();
     }
+
+    std::vector<Data::Entity*> EntitySystem::GetAllCollidables()
+    {
+		std::vector<Data::Entity*> collidables;
+        std::vector<std::string> collidableNames = { "plattform_1", "plattform_2", "plattform_3"};
+
+        for (auto& entity : itemManager.GetAll())
+        {
+            if (std::find(collidableNames.begin(), collidableNames.end(), entity->metaEntity->name) != collidableNames.end())
+            {
+				collidables.push_back(entity);
+			}
+		}
+
+		return collidables;
+	}
 }

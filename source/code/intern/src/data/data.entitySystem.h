@@ -25,6 +25,9 @@ namespace Data
         public:
             int Initialize(XMLDocument& document);
             std::vector<Data::Entity*> GetAll();
+            std::vector<Data::Entity*> GetAllCollidables();
+
+
 
         private:
             EntitySystem() {};

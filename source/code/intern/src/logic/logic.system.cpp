@@ -16,16 +16,18 @@ namespace Logic
         Data::PlayerSystem& playerSystem = Data::PlayerSystem::GetInstance();
         Data::Entity* player = playerSystem.GetPlayer();
 
-        CheckPlayerIsWalkingOnGround();
+        bool playerIsWalkingOnGround = PlayerIsWalkingOnGround();
+        bool playerIsWalkingOnPlattform = PlayerIsWalkingOnPlattform();
 
-        /*
-            if (!PlayerIsWalkingOnGround())
-            {
-                player->position[1] = player->position[1] + 50.0f;
-            }
-        */
-        
-        // playerSystem.UpdatePhysics();
+        if (!playerIsWalkingOnGround && !playerIsWalkingOnPlattform)
+        {
+            player->position[1] = player->position[1] + 25.0f;
+
+            player->aabb = Core::CAABB2<float>(
+                Core::Float2(player->position[0], player->position[1] + 25.0f),
+                Core::Float2(player->position[0] + 50, player->position[1] + 25.0f + 50)
+            );
+		}
     }
 
     void System::HandleCommands()
@@ -44,7 +46,7 @@ namespace Logic
 					break;
 
                 case Data::CommandAction::MoveLeftAndJump:
-                    MovePlayer(Core::Float2(-15, -100));
+                    MovePlayer(Core::Float2(-15, -75));
 					break;
 
                 case Data::CommandAction::MoveRight:
@@ -52,11 +54,11 @@ namespace Logic
 					break;
 
                 case Data::CommandAction::MoveRightAndJump:
-					MovePlayer(Core::Float2(15, -100));
+					MovePlayer(Core::Float2(15, -75));
                 break;
 
 				case Data::CommandAction::Jump:
-					MovePlayer(Core::Float2(0, -100));
+					MovePlayer(Core::Float2(0, -75));
                     break;
 
                 default:
@@ -95,38 +97,65 @@ namespace Logic
             return;
         }
 
-        // playerSystem.UpdatePhysics();
+        // handle the collision
+        std::vector<Data::Entity*> entities = Data::EntitySystem::GetInstance().GetAllCollidables();
+        std::vector<Data::Entity*> collidingEntities;
+
+        for (Data::Entity* entity : entities)
+        {
+            if (entity == nullptr)
+            {
+				continue;
+			}
+
+            Core::CAABB2<float> movedPlayerAabb = Core::CAABB2<float>(
+				Core::Float2(player->position[0] + orientation[0] + 1, player->position[1] + orientation[1] + 1),
+				Core::Float2(player->position[0] + orientation[0] + 49, player->position[1] + orientation[1] + 49)
+			);
+
+            if (movedPlayerAabb.Intersects(entity->aabb) == true)
+            {
+                collidingEntities.push_back(entity);
+                // std::cout << "Collision detected with entity." << entity->metaEntity->name << std::endl;
+            }
+		}   
+
         playerSystem.MovePlayer(orientation[0], orientation[1]);
+        player->aabb = Core::CAABB2<float>(
+            Core::Float2(player->position[0] + orientation[0], player->position[1] + orientation[1]),
+            Core::Float2(player->position[0] + orientation[0] + 50, player->position[1] + orientation[1] + 50)
+        );
     }
 
-    bool System::CheckPlayerIsWalkingOnGround()
+    bool System::PlayerIsWalkingOnPlattform()
     {
-        bool isWalkingOnGround = false;
-
-		Data::PlayerSystem& playerSystem = Data::PlayerSystem::GetInstance();
-		Data::Entity* player = playerSystem.GetPlayer();
-
-        // compare two float values
-        auto compareFloats = [](float a, float b) -> bool
-        {
-			float epsilon = 0.0001f;
-			return std::abs(a - b) < epsilon;
-		};
-
-        if (compareFloats(player->position[1], 450.0f))
-        {
-			isWalkingOnGround = true;
-            return isWalkingOnGround;
-        }
+        Data::PlayerSystem& playerSystem = Data::PlayerSystem::GetInstance();
+        Data::Entity* player = playerSystem.GetPlayer();
 
         Data::EntitySystem& entitySystem = Data::EntitySystem::GetInstance();
-        auto entities = entitySystem.GetAll();
-
-        for (auto entity : entities)
-        {
-            // check if there is a platform under the player
+        auto entities = entitySystem.GetAllCollidables();
+        
+        float playerBottom = player->aabb.GetMax()[1];
+        for (const auto& entity : entities) {
+            float entityTop = entity->aabb.GetMin()[1];
+                
+            if (playerBottom >= entityTop &&
+                player->aabb.GetCenter()[0] >= entity->aabb.GetMin()[0] &&
+                player->aabb.GetCenter()[0] <= entity->aabb.GetMax()[0]) 
+            {
+                // std::cout << "Player is walking on platform " << std::endl;
+                return true;
+            }
         }
+        
+        return false;
+    }
 
-		return isWalkingOnGround;
-	}
+    bool System::PlayerIsWalkingOnGround()
+    {
+        Data::PlayerSystem& playerSystem = Data::PlayerSystem::GetInstance();
+        Data::Entity* player = playerSystem.GetPlayer();
+
+        return !(player->position[1] < 450.0f);
+    }
 }
