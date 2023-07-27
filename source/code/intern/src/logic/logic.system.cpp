@@ -24,8 +24,8 @@ namespace Logic
             player->position[1] = player->position[1] + 25.0f;
 
             player->aabb = Core::CAABB2<float>(
-                Core::Float2(player->position[0], player->position[1] + 25.0f),
-                Core::Float2(player->position[0] + 50, player->position[1] + 25.0f + 50)
+                Core::Float2(player->position[0], player->position[1]),
+                Core::Float2(player->position[0] + 50, player->position[1] + 50)
             );
 		}
     }
@@ -120,6 +120,7 @@ namespace Logic
             }
 		}   
 
+        // FIXME: ???
         playerSystem.MovePlayer(orientation[0], orientation[1]);
         player->aabb = Core::CAABB2<float>(
             Core::Float2(player->position[0] + orientation[0], player->position[1] + orientation[1]),
@@ -131,7 +132,7 @@ namespace Logic
     {
         // function to compare floats
         auto floatCompare = [](float a, float b) -> bool {
-			return fabs(a - b) < 1.5f;
+			return fabs(a - b) < 0.005f;
 		};
 
         Data::PlayerSystem& playerSystem = Data::PlayerSystem::GetInstance();
