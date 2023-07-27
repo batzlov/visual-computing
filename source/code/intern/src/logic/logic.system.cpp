@@ -129,6 +129,11 @@ namespace Logic
 
     bool System::PlayerIsWalkingOnPlattform()
     {
+        // function to compare floats
+        auto floatCompare = [](float a, float b) -> bool {
+			return fabs(a - b) < 1.5f;
+		};
+
         Data::PlayerSystem& playerSystem = Data::PlayerSystem::GetInstance();
         Data::Entity* player = playerSystem.GetPlayer();
 
@@ -139,11 +144,12 @@ namespace Logic
         for (const auto& entity : entities) {
             float entityTop = entity->aabb.GetMin()[1];
                 
-            if (playerBottom >= entityTop &&
+            if (
+                floatCompare(playerBottom, entityTop) &&
                 player->aabb.GetCenter()[0] >= entity->aabb.GetMin()[0] &&
-                player->aabb.GetCenter()[0] <= entity->aabb.GetMax()[0]) 
+                player->aabb.GetCenter()[0] <= entity->aabb.GetMax()[0]
+            ) 
             {
-                // std::cout << "Player is walking on platform " << std::endl;
                 return true;
             }
         }
