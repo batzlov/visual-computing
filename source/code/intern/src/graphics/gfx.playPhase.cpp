@@ -54,12 +54,12 @@ namespace Gfx
             {
                 if (entity->metaEntity->name == "player" && !playerSystem.GetLooksRight())
                 {
-                    entitySprite.setOrigin({ entitySprite.getLocalBounds().width / 2, 0 });
+                    entitySprite.setOrigin({ 0, 0 });
                     entitySprite.setScale(-1, 1);
                 }
                 else if (entity->metaEntity->name == "player" && playerSystem.GetLooksRight())
                 {
-                    entitySprite.setOrigin({ entitySprite.getLocalBounds().width / 2, 0 });
+                    entitySprite.setOrigin({ 0, 0 });
                     entitySprite.setScale(1, 1);
                 }
             }
