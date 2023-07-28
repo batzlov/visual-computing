@@ -3,6 +3,8 @@
 
 #include "data.entityLink.h"
 #include "data.metaEntity.h"
+#include "data.entityCategory.h"
+
 #include "../core/core.vector2.h"
 
 #include <array>
@@ -29,6 +31,7 @@ namespace Data
             void* GetFacet(Facet type);
 
         public:
+            EntityCategory::Enum category;
             Core::CVector2<float> position;
             Core::CVector2<float> size;
             Core::CAABB2<float> aabb;

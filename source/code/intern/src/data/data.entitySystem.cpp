@@ -29,6 +29,15 @@ namespace Data
             auto metaEntityId = metaEntitySystem.GetMetaEntityId(metaEntityName);
             Data::MetaEntity& metaEntity = metaEntitySystem.GetMetaEntityById(metaEntityId);
 
+            auto type = atoi(
+                xmlEntity
+                    ->FirstChildElement("data")
+                    ->FirstChildElement("type")
+                    ->FirstChild()
+                    ->Value()
+            );
+            type = type >= EntityCategory::NumberOfMembers ? EntityCategory::Undefined : EntityCategory::Enum(type);
+
             auto positionFloatStrings = Core::Explode(
                 xmlEntity
                 ->FirstChildElement("data")
@@ -88,7 +97,7 @@ namespace Data
     std::vector<Data::Entity*> EntitySystem::GetAllCollidables()
     {
 		std::vector<Data::Entity*> collidables;
-        std::vector<std::string> collidableNames = { "plattform_1", "plattform_2", "plattform_3"};
+        std::vector<std::string> collidableNames = { "plattform_1", "plattform_2", "plattform_3", "finish", "crate"};
 
         for (auto& entity : itemManager.GetAll())
         {

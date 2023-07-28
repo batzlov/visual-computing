@@ -123,7 +123,7 @@ namespace Logic
             if (movedPlayerAabb.Intersects(entity->aabb) == true)
             {
                 collidingEntities.push_back(entity);
-                // std::cout << "Collision detected with entity." << entity->metaEntity->name << std::endl;
+                std::cout << "Collision detected with entity of type: " << entity->category << std::endl;
             }
 		}   
 

@@ -8,7 +8,9 @@ namespace Data
         {
             Character,
             Ground,
+            Plattform,
             Obstacle,
+            Finish,
             NumberOfMembers,
             Undefined = -1,
         };
