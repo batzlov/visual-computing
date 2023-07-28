@@ -38,7 +38,7 @@ namespace Game
         Gui::PlayPhase::GetInstance().OnRun();
         Logic::PlayPhase::GetInstance().OnRun();
 
-        return Type::PLAY;
+        return nextRunPhase;
     }
 
     int PlayPhase::InternOnLeave() 

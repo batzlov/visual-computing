@@ -5,7 +5,7 @@
 #include "logic/logic.unloadPhase.h"
 #include "graphics/gfx.unloadPhase.h"
 #include "gui/gui.unloadPhase.h"
-
+#include "data/data.unloadPhase.h"
 
 namespace Game 
 {
@@ -14,7 +14,7 @@ namespace Game
         Logic::UnloadPhase::GetInstance().OnEnter();
         Gfx::UnloadPhase::GetInstance().OnEnter();
         Gui::UnloadPhase::GetInstance().OnEnter();
-
+        Data::UnloadPhase::GetInstance().OnEnter();
 
         return 0;
     }
@@ -24,6 +24,7 @@ namespace Game
         Logic::UnloadPhase::GetInstance().OnRun();
         Gfx::UnloadPhase::GetInstance().OnRun();
         Gui::UnloadPhase::GetInstance().OnRun();
+        Data::UnloadPhase::GetInstance().OnRun();
 
         return Type::MAIN_MENU;
     }
@@ -33,6 +34,7 @@ namespace Game
         Logic::UnloadPhase::GetInstance().OnLeave();
         Gfx::UnloadPhase::GetInstance().OnLeave();
         Gui::UnloadPhase::GetInstance().OnLeave();
+        Data::UnloadPhase::GetInstance().OnLeave();
 
         return 0;
     }

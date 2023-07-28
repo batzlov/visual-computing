@@ -36,8 +36,7 @@ namespace Data
                     ->FirstChild()
                     ->Value()
             );
-            type = type >= EntityCategory::NumberOfMembers ? EntityCategory::Undefined : EntityCategory::Enum(type);
-
+                        
             auto positionFloatStrings = Core::Explode(
                 xmlEntity
                 ->FirstChildElement("data")
@@ -58,6 +57,7 @@ namespace Data
             auto entityId = idManager.Register(entityName);
             Entity& entity = itemManager.CreateItem(entityId);
             entity.metaEntity = &metaEntity;
+            entity.category = type >= EntityCategory::NumberOfMembers ? EntityCategory::Enum::Undefined : EntityCategory::Enum(type);;
             
             entity.position = Core::Float2(
                 std::stof(positionFloatStrings[0]),

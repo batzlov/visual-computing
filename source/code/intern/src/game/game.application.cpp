@@ -71,9 +71,6 @@ namespace Game
                 {
                     pressedKeys.erase(event.key.code);
                 }
-
-                // FIXME: this is not working as expected and should be removed in the future
-                // HandleEvent(event);
             }
 
             for (auto& key : pressedKeys)
@@ -90,57 +87,6 @@ namespace Game
     }
 
     void Application::Shutdown() {}
-
-    void Application::HandleEvent(sf::Event event)
-    {
-        std::cout << "Handle event is called.." << std::endl;
-
-        if(event.type == sf::Event::Closed)
-		{
-			window.close();
-		}
-
-        if (event.type == sf::Event::KeyPressed)
-        {
-            Data::EventSystem::GetInstance().FireEvent(Data::EventType::DispatchEventToInput, event.key.code);
-        }
-
-        if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Space)
-        {
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-            {
-                Data::EventSystem::GetInstance().FireEvent(Data::EventType::DispatchEventToInput, sf::Keyboard::Left);
-            }
-
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-			{
-                Data::EventSystem::GetInstance().FireEvent(Data::EventType::DispatchEventToInput, sf::Keyboard::Right);
-			}
-        }
-
-        /*
-            switch (event.type)
-            {
-                case sf::Event::Resized:
-                    // update the view to the new size of the window
-                    // sf::FloatRect visibleArea(0, 0, (float) event.size.width, (float) event.size.height);
-                break;
-
-                case sf::Event::KeyPressed:
-                    Data::EventSystem::GetInstance().FireEvent(Data::EventType::DispatchEventToInput, event.key.code);
-                break;
-
-
-                case sf::Event::Closed: 
-                    window.close();
-                break;
-
-                default:
-                    std::cout << "default event case" << event.type << std::endl;
-                break;
-            }
-        */
-    }
 
     HandlePhaseChangeResult Application::HandlePhaseChange()
     {

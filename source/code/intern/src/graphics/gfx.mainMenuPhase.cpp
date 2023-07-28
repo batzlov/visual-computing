@@ -32,6 +32,8 @@ namespace Gfx
         Game::Application& app = Game::Application::GetInstance();
         auto selectLabel = Gui::MainMenuPhase::GetInstance().GetSelectedMenuLabel();
 
+        // reset view
+        app.window.setView(app.window.getDefaultView());
         app.window.clear(sf::Color::Black);
         app.window.draw(screens[selectLabel]);
         app.window.display();

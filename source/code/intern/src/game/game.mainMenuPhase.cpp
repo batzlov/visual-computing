@@ -15,8 +15,8 @@ namespace Game
 
         Data::EventSystem::GetInstance().Register(Data::EventType::PressedEnter, &MainMenuPhase::OnEnter);
         Data::EventSystem::GetInstance().Register(Data::EventType::PressedEscape, &MainMenuPhase::OnExit);
-        Data::EventSystem::GetInstance().Register(Data::EventType::PressedUp, &MainMenuPhase::OnUpOrDown);
-        Data::EventSystem::GetInstance().Register(Data::EventType::PressedDown, &MainMenuPhase::OnUpOrDown);
+        Data::EventSystem::GetInstance().Register(Data::EventType::PressedUp, &MainMenuPhase::OnUp);
+        Data::EventSystem::GetInstance().Register(Data::EventType::PressedDown, &MainMenuPhase::OnDown);
 
         Data::MainMenuPhase::GetInstance().OnEnter();
         Gfx::MainMenuPhase::GetInstance().OnEnter();
@@ -38,8 +38,8 @@ namespace Game
     {
         Data::EventSystem::GetInstance().Unregister(Data::EventType::PressedEnter, &MainMenuPhase::OnEnter);
         Data::EventSystem::GetInstance().Unregister(Data::EventType::PressedEscape, &MainMenuPhase::OnExit);
-        Data::EventSystem::GetInstance().Unregister(Data::EventType::PressedUp, &MainMenuPhase::OnUpOrDown);
-        Data::EventSystem::GetInstance().Unregister(Data::EventType::PressedDown, &MainMenuPhase::OnUpOrDown);
+        Data::EventSystem::GetInstance().Unregister(Data::EventType::PressedUp, &MainMenuPhase::OnUp);
+        Data::EventSystem::GetInstance().Unregister(Data::EventType::PressedDown, &MainMenuPhase::OnDown);
 
         Data::MainMenuPhase::GetInstance().OnLeave();
         Gfx::MainMenuPhase::GetInstance().OnLeave();
@@ -67,19 +67,15 @@ namespace Game
 		}
 	}
 
-    void MainMenuPhase::OnUpOrDown(Data::Event& /* event */)
+    void MainMenuPhase::OnUp(Data::Event& /* event */)
     {
-        auto selectedLabel = Gui::MainMenuPhase::GetInstance().GetSelectedMenuLabel();
-
-        if (selectedLabel == Gui::SelectedMenuLabel::PLAY)
-        {
-			Gui::MainMenuPhase::GetInstance().SetSelectedMenuLabel(Gui::SelectedMenuLabel::EXIT);
-		}
-        else if (selectedLabel == Gui::SelectedMenuLabel::EXIT)
-        {
-			Gui::MainMenuPhase::GetInstance().SetSelectedMenuLabel(Gui::SelectedMenuLabel::PLAY);
-		}
+        Gui::MainMenuPhase::GetInstance().SetSelectedMenuLabel(Gui::SelectedMenuLabel::PLAY);
 	}
+
+    void MainMenuPhase::OnDown(Data::Event& /* event */)
+    {
+		Gui::MainMenuPhase::GetInstance().SetSelectedMenuLabel(Gui::SelectedMenuLabel::EXIT);
+    }
 
     void MainMenuPhase::OnExit(Data::Event& /* event */)
     {

@@ -39,7 +39,6 @@ namespace Game
             void Shutdown();
 
         private:
-            void HandleEvent(sf::Event event);
             HandlePhaseChangeResult HandlePhaseChange();
     };
 }

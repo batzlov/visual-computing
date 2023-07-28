@@ -220,6 +220,7 @@
     <ClCompile Include="..\..\src\data\data.playerSystem.cpp" />
     <ClCompile Include="..\..\src\data\data.shutdownPhase.cpp" />
     <ClCompile Include="..\..\src\data\data.startupPhase.cpp" />
+    <ClCompile Include="..\..\src\data\data.unloadPhase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\data\data.commandAction.h" />
@@ -244,6 +245,7 @@
     <ClInclude Include="..\..\src\data\data.sector.h" />
     <ClInclude Include="..\..\src\data\data.shutdownPhase.h" />
     <ClInclude Include="..\..\src\data\data.startupPhase.h" />
+    <ClInclude Include="..\..\src\data\data.unloadPhase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

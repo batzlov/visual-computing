@@ -8,6 +8,7 @@
 
 #include "../data/data.playerSystem.h"
 #include "../data/data.entitySystem.h"
+#include "../data/data.eventSystem.h"
 
 namespace Logic 
 {
@@ -122,8 +123,16 @@ namespace Logic
 
             if (movedPlayerAabb.Intersects(entity->aabb) == true)
             {
+                if (entity->category == Data::EntityCategory::Enum::Finish)
+                {
+                    Data::EventSystem::GetInstance().FireEvent(Data::EventType::FinishedMap);
+				}
+                else if (entity->category == Data::EntityCategory::Obstacle)
+                {
+                    return;
+                }
+
                 collidingEntities.push_back(entity);
-                std::cout << "Collision detected with entity of type: " << entity->category << std::endl;
             }
 		}   
 
