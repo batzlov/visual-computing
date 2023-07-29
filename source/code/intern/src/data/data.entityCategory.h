@@ -11,6 +11,8 @@ namespace Data
             Plattform,
             Obstacle,
             Finish,
+            ShroomMagic,
+            ShroomToxic,
             NumberOfMembers,
             Undefined = -1,
         };
