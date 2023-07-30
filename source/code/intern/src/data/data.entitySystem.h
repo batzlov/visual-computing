@@ -24,6 +24,10 @@ namespace Data
 
         public:
             int Initialize(XMLDocument& document);
+
+            void Destroy(Entity& entity);
+            void DestroyAll();
+
             std::vector<Data::Entity*> GetAll();
             std::vector<Data::Entity*> GetAllCollidables();
             std::vector<Data::Entity*> GetAllWalkables();

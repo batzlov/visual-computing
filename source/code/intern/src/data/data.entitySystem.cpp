@@ -54,9 +54,10 @@ namespace Data
 				';'
 			);
 
-            auto entityId = idManager.Register(entityName);
+            Core::CIDManager::BID entityId = idManager.Register(entityName);
             Entity& entity = itemManager.CreateItem(entityId);
             entity.metaEntity = &metaEntity;
+            entity.id = entityId;
             entity.category = type >= EntityCategory::NumberOfMembers ? EntityCategory::Enum::Undefined : EntityCategory::Enum(type);;
             
             entity.position = Core::Float2(
@@ -89,6 +90,17 @@ namespace Data
         return entityCount;
     }
 
+    void EntitySystem::Destroy(Entity& entity)
+	{
+		itemManager.DestroyItem(entity.id);
+	}
+
+    void EntitySystem::DestroyAll()
+	{
+        itemManager.Clear();
+        idManager.Clear();
+	}
+
     std::vector<Data::Entity*> EntitySystem::GetAll()
     {
         return itemManager.GetAll();
@@ -109,6 +121,11 @@ namespace Data
 
         for (auto& entity : itemManager.GetAll())
         {
+            if (entity == nullptr)
+            {
+                continue;
+            }
+
             if (std::find(collidableNames.begin(), collidableNames.end(), entity->metaEntity->name) != collidableNames.end())
             {
 				collidables.push_back(entity);
@@ -129,7 +146,12 @@ namespace Data
 		};
 
         for (auto& entity : itemManager.GetAll())
-        {
+        {   
+            if (entity == nullptr)
+            {
+				continue;
+			}
+
             if (std::find(walkableNames.begin(), walkableNames.end(), entity->metaEntity->name) != walkableNames.end())
             {
 				walkables.push_back(entity);

@@ -39,6 +39,10 @@ namespace Gfx
         Data::PlayerSystem& playerSystem = Data::PlayerSystem::GetInstance();
         for(auto entity : entities) 
         {
+            if (entity == nullptr) {
+                continue;
+            }
+
             std::string filePath;
             sf::Texture* entityTexture;
             sf::Sprite entitySprite;
@@ -126,7 +130,7 @@ namespace Gfx
             // set position to center of the screen
             sf::Vector2f viewCenter = app.GetInstance().window.getView().getCenter();
             viewCenter.x = viewCenter.x - text.getLocalBounds().width / 2;
-            viewCenter.y = viewCenter.y - text.getLocalBounds().height / 2;
+            viewCenter.y = viewCenter.y - text.getLocalBounds().height;
             text.setPosition(viewCenter);
 
             app.window.draw(text);

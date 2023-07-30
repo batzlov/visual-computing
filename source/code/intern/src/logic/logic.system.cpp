@@ -144,10 +144,14 @@ namespace Logic
                 else if (entity->category == Data::EntityCategory::ShroomMagic)
                 {
                     playerSystem.Intoxicate();
+
+                    Data::EntitySystem::GetInstance().Destroy(*entity);
                 }
                 else if (entity->category == Data::EntityCategory::ShroomToxic)
                 {
                     playerSystem.Die();
+
+                    Data::EntitySystem::GetInstance().Destroy(*entity);
                 }
                 else if (entity->category == Data::EntityCategory::Obstacle)
                 {

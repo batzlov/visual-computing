@@ -97,6 +97,20 @@ namespace Core
                 m_ItemsByID.clear();
             }
 
+            void DestroyItem(BID _ID)
+            {
+				assert(_ID < m_ItemsByID.size());
+
+				XPtr pItem = m_ItemsByID[_ID];
+
+                if (pItem != nullptr)
+                {
+					m_Items.FreeItem(*pItem);
+				}
+
+				m_ItemsByID[_ID] = nullptr;
+			}
+
             std::vector<XPtr> GetAll() 
             {
                 return m_ItemsByID;
