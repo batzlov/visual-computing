@@ -97,7 +97,15 @@ namespace Data
     std::vector<Data::Entity*> EntitySystem::GetAllCollidables()
     {
 		std::vector<Data::Entity*> collidables;
-        std::vector<std::string> collidableNames = { "plattform_1", "plattform_2", "plattform_3", "finish", "crate"};
+        std::vector<std::string> collidableNames = { 
+            "plattform_1", 
+            "plattform_2", 
+            "plattform_3", 
+            "finish", 
+            "crate",
+            "shroom_magic",
+            "shroom_toxic"
+        };
 
         for (auto& entity : itemManager.GetAll())
         {
@@ -108,5 +116,26 @@ namespace Data
 		}
 
 		return collidables;
+	}
+
+    std::vector<Data::Entity*> EntitySystem::GetAllWalkables()
+    {
+		std::vector<Data::Entity*> walkables;
+        std::vector<std::string> walkableNames = {
+			"plattform_1", 
+			"plattform_2", 
+			"plattform_3", 
+			"crate"
+		};
+
+        for (auto& entity : itemManager.GetAll())
+        {
+            if (std::find(walkableNames.begin(), walkableNames.end(), entity->metaEntity->name) != walkableNames.end())
+            {
+				walkables.push_back(entity);
+			}
+		}
+
+		return walkables;
 	}
 }

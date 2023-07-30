@@ -91,6 +91,47 @@ namespace Gfx
 			}
         }
 
+        // check if the player is on a psychedlic journey, if so show it
+        if (playerSystem.IsIntoxicated())
+        {
+            filePath = Core::Config::backgroundDirs + "psychedelic-2-compressed.jpg";
+            sf::Texture psychedelicTexture;
+            psychedelicTexture.loadFromFile(filePath.c_str());
+            psychedelicTexture.setRepeated(true);
+
+            sf::IntRect overlayBounds(0, 0, 1600, 1600);
+            sf::Sprite psychedelicSprite = sf::Sprite(psychedelicTexture, overlayBounds);
+            psychedelicSprite.setPosition(
+                (float)bounds.left,
+                (float)bounds.top - 700.0f + app.GetInstance().window.getView().getSize().y
+            );
+            psychedelicSprite.setColor(sf::Color(255, 255, 255, 128));
+
+            app.window.draw(psychedelicSprite);
+        }
+
+        // check if the player died, if so show it
+        if (playerSystem.IsDead())
+        {
+            // draw game over text
+            sf::Font font;
+            font.loadFromFile(Core::Config::fontsDir + "amatic-sc-bold.ttf");
+                                   
+            sf::Text text;
+            text.setString("Game Over");
+            text.setFont(font);
+            text.setCharacterSize(100);
+            text.setFillColor(sf::Color::Red);
+
+            // set position to center of the screen
+            sf::Vector2f viewCenter = app.GetInstance().window.getView().getCenter();
+            viewCenter.x = viewCenter.x - text.getLocalBounds().width / 2;
+            viewCenter.y = viewCenter.y - text.getLocalBounds().height / 2;
+            text.setPosition(viewCenter);
+
+            app.window.draw(text);
+        }
+
         app.window.display();
     }
 

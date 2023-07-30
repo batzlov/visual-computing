@@ -1,6 +1,9 @@
+
 #include <iostream>
 
 #include "data.playerSystem.h"
+
+#include "../core/core.time.h"
 
 namespace Data 
 {
@@ -79,4 +82,50 @@ namespace Data
             // this->player->position[1] - this->velocityY
         );
     }
+
+    void PlayerSystem::Intoxicate()
+    {
+		this->isIntoxicated = true;
+		this->wasIntoxicatedAt = Core::Time::GetTime();
+	}
+
+    bool PlayerSystem::IsIntoxicated()
+    {
+		return this->isIntoxicated;
+	}
+
+    void PlayerSystem::SoberUp()
+    {
+        this->isIntoxicated = false;
+        this->wasIntoxicatedAt = 0.0;
+    }
+
+    void PlayerSystem::UpdateIntoxication()
+    {
+        if (!this->isIntoxicated)
+        {
+            return;
+		}
+
+        if (Core::Time::GetTime() - this->wasIntoxicatedAt > this->intoxicatedFor)
+        {
+			this->SoberUp();
+		}
+	}
+
+    void PlayerSystem::Die()
+    {
+		this->isDead = true;
+		this->diedAt = Core::Time::GetTime();
+	}
+
+    bool PlayerSystem::DeadSequenceIsOver()
+    {
+		return Core::Time::GetTime() - this->diedAt > this->showDeadMessageFor;
+	}
+
+    bool PlayerSystem::IsDead()
+    {
+		return this->isDead;
+	}
 }

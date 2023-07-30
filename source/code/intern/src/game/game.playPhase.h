@@ -19,6 +19,7 @@ namespace Game
 
             // event callbacks
             static void FinishedMap(Data::Event& event);
+            static void PlayerDied(Data::Event& event);
             static void Exit(Data::Event& event);
 
         private:

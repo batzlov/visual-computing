@@ -7,6 +7,7 @@ namespace Data
         enum Enum
         {
             FinishedMap,
+            PlayerDied,
 
             DispatchEventToInput,
             DispatchInputToCommand,

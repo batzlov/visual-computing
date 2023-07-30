@@ -21,6 +21,7 @@ namespace Game
         Core::Time::Reset();
 
         Data::EventSystem::GetInstance().Register(Data::EventType::FinishedMap, &PlayPhase::FinishedMap);
+        Data::EventSystem::GetInstance().Register(Data::EventType::PlayerDied, &PlayPhase::PlayerDied);
         Data::EventSystem::GetInstance().Register(Data::EventType::PressedEscape, &PlayPhase::Exit);
 
         Gfx::PlayPhase::GetInstance().OnEnter();
@@ -44,6 +45,7 @@ namespace Game
     int PlayPhase::InternOnLeave() 
     {
         Data::EventSystem::GetInstance().Unregister(Data::EventType::FinishedMap, &PlayPhase::FinishedMap);
+        Data::EventSystem::GetInstance().Unregister(Data::EventType::PlayerDied, &PlayPhase::PlayerDied);
         Data::EventSystem::GetInstance().Unregister(Data::EventType::PressedEscape, &PlayPhase::Exit);
 
         Gfx::PlayPhase::GetInstance().OnLeave();
@@ -54,6 +56,11 @@ namespace Game
     }
 
     void PlayPhase::FinishedMap(Data::Event& /* event */)
+    {
+        PlayPhase::GetInstance().nextRunPhase = Type::UNLOAD_MAP;
+    }
+
+    void PlayPhase::PlayerDied(Data::Event& /* event */)
     {
         PlayPhase::GetInstance().nextRunPhase = Type::UNLOAD_MAP;
     }

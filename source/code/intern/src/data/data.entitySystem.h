@@ -26,8 +26,7 @@ namespace Data
             int Initialize(XMLDocument& document);
             std::vector<Data::Entity*> GetAll();
             std::vector<Data::Entity*> GetAllCollidables();
-
-
+            std::vector<Data::Entity*> GetAllWalkables();
 
         private:
             EntitySystem() {};

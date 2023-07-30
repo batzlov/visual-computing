@@ -16,6 +16,14 @@ namespace Logic
     {
         HandleCommands();
         HandleGravity();
+
+        Data::PlayerSystem& playerSystem = Data::PlayerSystem::GetInstance();
+        playerSystem.UpdateIntoxication();
+
+        if (playerSystem.IsDead() && playerSystem.DeadSequenceIsOver())
+        {
+            Data::EventSystem::GetInstance().FireEvent(Data::EventType::PlayerDied);
+        }
     }
 
     void System::HandleCommands()
@@ -83,7 +91,7 @@ namespace Logic
         Data::PlayerSystem& playerSystem = Data::PlayerSystem::GetInstance();
         Data::Entity* player = playerSystem.GetPlayer();
         
-        if(player == nullptr) 
+        if(player == nullptr || playerSystem.IsDead()) 
         {
             return;
         }
@@ -129,10 +137,18 @@ namespace Logic
 
             if (movedPlayerAabb.Intersects(entity->aabb) == true)
             {
-                if (entity->category == Data::EntityCategory::Enum::Finish)
+                if (entity->category == Data::EntityCategory::Finish)
                 {
                     Data::EventSystem::GetInstance().FireEvent(Data::EventType::FinishedMap);
 				}
+                else if (entity->category == Data::EntityCategory::ShroomMagic)
+                {
+                    playerSystem.Intoxicate();
+                }
+                else if (entity->category == Data::EntityCategory::ShroomToxic)
+                {
+                    playerSystem.Die();
+                }
                 else if (entity->category == Data::EntityCategory::Obstacle)
                 {
                     return;
@@ -142,7 +158,6 @@ namespace Logic
             }
 		}   
 
-        // FIXME: ???
         playerSystem.MovePlayer(orientation[0], orientation[1]);
         player->aabb = Core::CAABB2<float>(
             Core::Float2(player->position[0] + orientation[0], player->position[1] + orientation[1]),
@@ -156,7 +171,7 @@ namespace Logic
         Data::Entity* player = playerSystem.GetPlayer();
 
         Data::EntitySystem& entitySystem = Data::EntitySystem::GetInstance();
-        auto entities = entitySystem.GetAllCollidables();
+        auto entities = entitySystem.GetAllWalkables();
         
         float playerBottom = player->aabb.GetMax()[1];
         for (const auto& entity : entities) {
