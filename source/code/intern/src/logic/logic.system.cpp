@@ -15,26 +15,14 @@ namespace Logic
     void System::OnTurn()
     {
         HandleCommands();
-
-        Data::PlayerSystem& playerSystem = Data::PlayerSystem::GetInstance();
-        Data::Entity* player = playerSystem.GetPlayer();
-
-        bool playerIsWalkingOnGround = PlayerIsWalkingOnGround();
-        bool playerIsWalkingOnPlattform = PlayerIsWalkingOnPlattform();
-
-        if (!playerIsWalkingOnGround && !playerIsWalkingOnPlattform)
-        {
-            player->position[1] = player->position[1] + 25.0f;
-
-            player->aabb = Core::CAABB2<float>(
-                Core::Float2(player->position[0], player->position[1]),
-                Core::Float2(player->position[0] + 50, player->position[1] + 50)
-            );
-		}
+        HandleGravity();
     }
 
     void System::HandleCommands()
     {
+        float verticalStep = -75.0f;
+        float horizontalStep = 15.0f;
+
         CommandSystem& commandSystem = CommandSystem::GetInstance();
         Command* command;
 
@@ -45,23 +33,23 @@ namespace Logic
             switch (command->GetType())
             {
                 case Data::CommandAction::MoveLeft:
-					MovePlayer(Core::Float2(-15, 0));
+					MovePlayer(Core::Float2(-horizontalStep, 0));
 					break;
 
                 case Data::CommandAction::MoveLeftAndJump:
-                    MovePlayer(Core::Float2(-15, -75));
+                    MovePlayer(Core::Float2(-horizontalStep, verticalStep));
 					break;
 
                 case Data::CommandAction::MoveRight:
-                    MovePlayer(Core::Float2(15, 0));
+                    MovePlayer(Core::Float2(horizontalStep, 0));
 					break;
 
                 case Data::CommandAction::MoveRightAndJump:
-					MovePlayer(Core::Float2(15, -75));
+					MovePlayer(Core::Float2(horizontalStep, verticalStep));
                 break;
 
 				case Data::CommandAction::Jump:
-					MovePlayer(Core::Float2(0, -75));
+					MovePlayer(Core::Float2(0, verticalStep));
                     break;
 
                 default:
@@ -69,6 +57,24 @@ namespace Logic
             }
 
             commandSystem.RemoveNextInQueue();
+        }
+    }
+
+    void System::HandleGravity()
+    {
+        Data::PlayerSystem& playerSystem = Data::PlayerSystem::GetInstance();
+        Data::Entity* player = playerSystem.GetPlayer();
+
+        bool playerIsWalkingOnGround = PlayerIsWalkingOnGround();
+        bool playerIsWalkingOnPlattform = PlayerIsWalkingOnPlattform();
+
+        if (!playerIsWalkingOnGround && !playerIsWalkingOnPlattform)
+        {
+            player->position[1] = player->position[1] + 25.0f;
+            player->aabb = Core::CAABB2<float>(
+                Core::Float2(player->position[0], player->position[1]),
+                Core::Float2(player->position[0] + 50, player->position[1] + 50)
+            );
         }
     }
 
@@ -146,11 +152,6 @@ namespace Logic
 
     bool System::PlayerIsWalkingOnPlattform()
     {
-        // function to compare floats
-        auto floatCompare = [](float a, float b) -> bool {
-			return fabs(a - b) < 0.005f;
-		};
-
         Data::PlayerSystem& playerSystem = Data::PlayerSystem::GetInstance();
         Data::Entity* player = playerSystem.GetPlayer();
 

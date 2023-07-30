@@ -23,6 +23,8 @@ namespace Logic
 
         public: 
             void HandleCommands();
+            void HandleGravity();
+
             void MovePlayer(Core::Float2 orientation);
 
             bool PlayerIsWalkingOnPlattform();
