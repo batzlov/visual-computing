@@ -9,6 +9,7 @@
 #include "../data/data.playerSystem.h"
 #include "../data/data.entitySystem.h"
 #include "../data/data.eventSystem.h"
+#include "../data/data.mapSystem.h"
 
 namespace Logic 
 {
@@ -97,8 +98,8 @@ namespace Logic
         }
 
         // limit movement of the player so it doesn't go out of the screen
-        float mapStartX = 25;
-        float mapEndX = 1525;
+        float mapStartX = MapSystem::GetInstance()->GetMapStart();
+        float mapEndX = MapSystem::GetInstance()->GetMapEnd();
 
         bool orientationXIsPositive = orientation[0] >= 0;
 

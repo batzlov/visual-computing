@@ -18,7 +18,7 @@ namespace Data
 
         Data::MetaEntitySystem& metaEntitySystem = Data::MetaEntitySystem::GetInstance();
 
-        tinyxml2::XMLElement* xmlEntities = document.FirstChildElement("entities");
+        tinyxml2::XMLElement* xmlEntities = document.FirstChildElement("map")->FirstChildElement("entities");
         tinyxml2::XMLElement* xmlEntity = xmlEntities->FirstChildElement("entity");
 
         while (xmlEntity != nullptr)
