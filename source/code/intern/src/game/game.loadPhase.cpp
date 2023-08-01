@@ -6,6 +6,7 @@
 
 #include "core/core.config.h"
 #include "data/data.loadPhase.h"
+#include "data/data.levelSystem.h"
 #include "logic/logic.loadPhase.h"
 #include "graphics/gfx.loadPhase.h"
 #include "gui/gui.loadPhase.h"
@@ -25,9 +26,9 @@ namespace Game
 
     int LoadPhase::InternOnRun() 
     {
-
         XMLDocument* document = new XMLDocument();
-        std::string filePath = Core::Config::levelsDir + "level-1.xml";
+        std::string selectedLevel = std::to_string(Data::LevelSystem::GetInstance().GetSelectedLevel());
+        std::string filePath = Core::Config::levelsDir + "level-" + selectedLevel + ".xml";
         document->LoadFile(filePath.c_str());
 
         Data::LoadPhase::GetInstance().OnRun(*document);

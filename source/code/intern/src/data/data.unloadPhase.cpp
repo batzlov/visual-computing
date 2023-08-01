@@ -7,7 +7,7 @@ namespace Data
 
     void UnloadPhase::OnRun()
     {
-        // EntitySystem::GetInstance().DestroyAllEntities();
+        EntitySystem::GetInstance().DestroyAll();
     }
 
     void UnloadPhase::OnLeave() {}

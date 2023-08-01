@@ -56,6 +56,14 @@ namespace Gui
             {
 				Data::EventSystem::GetInstance().FireEvent(Data::EventType::PressedDown);
 			}
+            else if(current.key.code == sf::Keyboard::Num1 || current.key.code == sf::Keyboard::Numpad1)
+            {
+                Data::EventSystem::GetInstance().FireEvent(Data::EventType::PressedOne);
+            }
+            else if(current.key.code == sf::Keyboard::Num2 || current.key.code == sf::Keyboard::Numpad2)
+            {
+                Data::EventSystem::GetInstance().FireEvent(Data::EventType::PressedTwo);
+            }
             else if (current.key.code == sf::Keyboard::Key::Escape)
             {
                 Data::EventSystem::GetInstance().FireEvent(Data::EventType::PressedEscape);

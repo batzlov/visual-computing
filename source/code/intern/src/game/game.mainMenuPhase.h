@@ -24,6 +24,8 @@ namespace Game
             static void OnUp(Data::Event& event);
             static void OnDown(Data::Event& event);
             static void OnExit(Data::Event& event);
+            static void OnOne(Data::Event& event);
+            static void OnTwo(Data::Event& event);
 
         private:
             MainMenuPhase() {};

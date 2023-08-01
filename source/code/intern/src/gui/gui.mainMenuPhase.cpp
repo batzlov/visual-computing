@@ -1,6 +1,9 @@
+#include <iostream>
+
 #include "gui.mainMenuPhase.h"
 #include "gui.inputSystem.h"
 
+#include "core/core.time.h"
 #include "data/data.eventType.h"
 #include "data/data.eventSystem.h"
 
@@ -11,7 +14,10 @@ namespace Gui
     MainMenuPhase::MainMenuPhase() 
         : selectedMenuLabel(SelectedMenuLabel::PLAY)
         , enterPressed(false)
-        , escapePressed(false) {}
+        , escapePressed(false)
+        , indicateLevelChange(false) 
+        , indicateLevelChangeDuration(2)
+    {}
 
     void MainMenuPhase::OnEnter() {}
 
@@ -23,6 +29,32 @@ namespace Gui
     }
 
     void MainMenuPhase::OnLeave() {}
+
+    int MainMenuPhase::GetSelectedLevel() const
+    {
+        return selectedLevel;
+    }
+
+    void MainMenuPhase::SetSelectedLevel(int level)
+    {
+        selectedLevel = level;
+    }
+
+    bool MainMenuPhase::IndicateLevelChange()
+    {
+        if(indicateLevelChange && this->indicateLevelChangeTimer.getElapsedTime().asSeconds() < indicateLevelChangeDuration)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    void MainMenuPhase::SetIndicateLevelChange(bool indicateLevelChange)
+    {
+        this->indicateLevelChange = indicateLevelChange;
+        this->indicateLevelChangeTimer.restart();
+    }
 
     SelectedMenuLabel MainMenuPhase::GetSelectedMenuLabel() 
     {
