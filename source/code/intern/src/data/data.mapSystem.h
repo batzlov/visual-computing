@@ -16,8 +16,14 @@ namespace Data
             MapSystem(const MapSystem&) = delete;
             MapSystem& operator = (const MapSystem&) = delete;
 
+            float GetHeight();
+            float GetWidth();
+
             float GetMapStart();
             float GetMapEnd();
+
+            float GetViewBorderStart();
+            float GetViewBorderEnd();
 
             void Initialize(tinyxml2::XMLDocument& document);
 

@@ -31,6 +31,7 @@ namespace Data
             void UpdateIntoxication();
 
             void Die();
+            void Revive();
             bool DeadSequenceIsOver();
             bool IsDead();
 

@@ -10,6 +10,16 @@ namespace Data
         , width(0.0f)
     {}
 
+    float MapSystem::GetHeight()
+    {
+		return this->height;
+	}
+
+    float MapSystem::GetWidth()
+    {
+        return this->width;
+    }
+
     float MapSystem::GetMapStart()
     {
         return 25.0f;
@@ -18,6 +28,16 @@ namespace Data
     float MapSystem::GetMapEnd()
     {
         return this->width - 75.0f;
+    }
+
+    float MapSystem::GetViewBorderStart()
+    {
+		return 150.0f;
+	}
+
+    float MapSystem::GetViewBorderEnd()
+    {
+        return this->width - 650.0f;
     }
 
     void MapSystem::Initialize(tinyxml2::XMLDocument& document)

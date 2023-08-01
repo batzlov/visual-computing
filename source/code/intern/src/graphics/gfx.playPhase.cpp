@@ -8,6 +8,7 @@
 #include "data/data.entity.h"
 #include "data/data.entitySystem.h"
 #include "data/data.playerSystem.h"
+#include "data/data.mapSystem.h"
 
 namespace Gfx
 {
@@ -25,7 +26,12 @@ namespace Gfx
         bgTexture.loadFromFile(filePath.c_str());
         bgTexture.setRepeated(true);
         
-        sf::IntRect bounds(0, 0, 1600, 1600);
+        sf::IntRect bounds(
+            0, 
+            0, 
+            Data::MapSystem::GetInstance().GetWidth(),
+            Data::MapSystem::GetInstance().GetWidth()
+        );
         sf::Sprite bgSprite = sf::Sprite(bgTexture, bounds);
         bgSprite.setPosition(
             (float) bounds.left, 
@@ -73,8 +79,8 @@ namespace Gfx
             // update the view position and background position to follow the player
             if (entity->metaEntity->name == "player")
             {
-                float minBorderX = 150;
-                float maxBorderX = 950;
+                float minBorderX = Data::MapSystem::GetInstance().GetViewBorderStart();
+                float maxBorderX = Data::MapSystem::GetInstance().GetViewBorderEnd();
 
                 // if the player is moving out of the screen, then don't need to move the view
                 if (entity->position[0] < minBorderX || entity->position[0] > maxBorderX)

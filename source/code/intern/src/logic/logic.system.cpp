@@ -24,6 +24,8 @@ namespace Logic
         if (playerSystem.IsDead() && playerSystem.DeadSequenceIsOver())
         {
             Data::EventSystem::GetInstance().FireEvent(Data::EventType::PlayerDied);
+
+            playerSystem.Revive();
         }
     }
 

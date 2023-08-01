@@ -119,6 +119,12 @@ namespace Data
 		this->diedAt = Core::Time::GetTime();
 	}
 
+    void PlayerSystem::Revive()
+    {
+        this->isDead = false;
+        this->diedAt = 0.0;
+    }
+
     bool PlayerSystem::DeadSequenceIsOver()
     {
 		return Core::Time::GetTime() - this->diedAt > this->showDeadMessageFor;
