@@ -1,6 +1,7 @@
 #include "data.mapSystem.h"
 
-#include <tinyxml2.h>
+#include <iostream>
+#include <string>
 
 namespace Data 
 {
@@ -19,11 +20,11 @@ namespace Data
         return this->width - 75.0f;
     }
 
-    MapSystem::Initialize(tinyxml2::XMLDocument& document)
+    void MapSystem::Initialize(tinyxml2::XMLDocument& document)
     {
-        tinyxml2::XMLElement* xmlMap = document.FirstChildElement("map");
+        tinyxml2::XMLElement* xmlMap = document.RootElement();
 
-        this->height = std::stof(xmlMap->FirstChildElement("height")->Value());
-        this->width = std::stof(xmlMap->FirstChildElement("width")->Value());
+        this->height = std::stof(xmlMap->FirstChildElement("height")->GetText());
+        this->width = std::stof(xmlMap->FirstChildElement("width")->GetText());
     }
 }

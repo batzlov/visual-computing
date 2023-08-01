@@ -98,8 +98,8 @@ namespace Logic
         }
 
         // limit movement of the player so it doesn't go out of the screen
-        float mapStartX = MapSystem::GetInstance()->GetMapStart();
-        float mapEndX = MapSystem::GetInstance()->GetMapEnd();
+        float mapStartX = Data::MapSystem::GetInstance().GetMapStart();
+        float mapEndX = Data::MapSystem::GetInstance().GetMapEnd();
 
         bool orientationXIsPositive = orientation[0] >= 0;
 

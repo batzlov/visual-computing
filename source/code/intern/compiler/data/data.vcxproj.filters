@@ -60,6 +60,9 @@
     <ClCompile Include="..\..\src\data\data.unloadPhase.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\data\data.mapSystem.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\data\data.menuPhase.h">
@@ -129,6 +132,9 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\data\data.unloadPhase.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\data\data.mapSystem.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

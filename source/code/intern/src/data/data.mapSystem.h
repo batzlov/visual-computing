@@ -1,5 +1,7 @@
 #pragma once
 
+#include <tinyxml2.h>
+
 namespace Data 
 {
     class MapSystem
@@ -17,7 +19,7 @@ namespace Data
             float GetMapStart();
             float GetMapEnd();
 
-            Initialize(tinyxml2::XMLDocument& document);
+            void Initialize(tinyxml2::XMLDocument& document);
 
         private:
             MapSystem();
