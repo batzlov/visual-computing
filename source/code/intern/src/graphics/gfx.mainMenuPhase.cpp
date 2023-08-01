@@ -40,7 +40,7 @@ namespace Gfx
             app.window.clear(sf::Color(49, 196, 177));
 
             sf::Font font;
-            font.loadFromFile(Core::Config::fontsDir + "amatic-sc-bold.ttf");
+            font.loadFromFile(Core::Config::fontsDir + "IndieFlower-Regular.ttf");
                                    
             sf::Text text;
             std::string levelText = "Selected Level: " + std::to_string(Data::LevelSystem::GetInstance().GetSelectedLevel());

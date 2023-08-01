@@ -89,19 +89,13 @@ namespace Game
 
     void MainMenuPhase::OnOne(Data::Event& /* event */)
     {
-        std::cout << "1" << std::endl;
-
         Data::LevelSystem::GetInstance().SetSelectedLevel(1);
-        
         Gui::MainMenuPhase::GetInstance().SetIndicateLevelChange(true);
     }
 
     void MainMenuPhase::OnTwo(Data::Event& /* event */)
     {
-        std::cout << "2" << std::endl;
-
         Data::LevelSystem::GetInstance().SetSelectedLevel(2);
-
         Gui::MainMenuPhase::GetInstance().SetIndicateLevelChange(true);
     }
 }

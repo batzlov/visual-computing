@@ -125,7 +125,7 @@ namespace Gfx
         {
             // draw game over text
             sf::Font font;
-            font.loadFromFile(Core::Config::fontsDir + "amatic-sc-bold.ttf");
+            font.loadFromFile(Core::Config::fontsDir + "IndieFlower-Regular.ttf");
                                    
             sf::Text text;
             text.setString("Game Over");
