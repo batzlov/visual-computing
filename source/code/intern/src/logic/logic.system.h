@@ -1,7 +1,9 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
+#include "../data/data.entity.h"
 #include "../core/core.vector.h"
 
 namespace Logic
@@ -24,6 +26,9 @@ namespace Logic
         public: 
             void HandleCommands();
             void HandleGravity();
+
+            std::vector<Data::Entity*> GetCollidingEntities(Core::CAABB2<float> aabb);
+            void HandleCollisions(std::vector<Data::Entity*> collisionEntities, bool& playerMovementIsBlocked);
 
             void MovePlayer(Core::Float2 orientation);
 

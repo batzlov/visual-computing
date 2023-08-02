@@ -65,7 +65,7 @@ namespace Data
         }
     }
 
-    void PlayerSystem::MovePlayer(const float directionX, const float directionY)
+    void PlayerSystem::MovePlayer(Core::Float2 distance)
     {
         /*
             // acceleration
@@ -80,8 +80,18 @@ namespace Data
         
 
         this->player->position = Core::Float2(
-            this->player->position[0] + directionX,
-            this->player->position[1] + directionY
+            this->player->position[0] + distance[0],
+            this->player->position[1] + distance[1]
+        );
+        this->player->aabb = Core::CAABB2<float>(
+            Core::Float2(
+                this->player->position[0],
+                this->player->position[1]
+            ),
+            Core::Float2(
+                this->player->position[0] + this->player->size[0],
+                this->player->position[1] + this->player->size[1]
+            )
         );
     }
 

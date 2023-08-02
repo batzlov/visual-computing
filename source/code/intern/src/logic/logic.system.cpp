@@ -76,24 +76,72 @@ namespace Logic
         Data::PlayerSystem& playerSystem = Data::PlayerSystem::GetInstance();
         Data::Entity* player = playerSystem.GetPlayer();
 
+        // check for collisions
+        bool* playerMovementIsBlocked = new bool(false);
+        std::vector<Data::Entity*> collidingEntities = GetCollidingEntities(player->aabb);
+        HandleCollisions(collidingEntities, *playerMovementIsBlocked);
+
         bool playerIsWalkingOnGround = PlayerIsWalkingOnGround();
         bool playerIsWalkingOnPlattform = PlayerIsWalkingOnPlattform();
 
         if (!playerIsWalkingOnGround && !playerIsWalkingOnPlattform)
         {
-            player->position[1] = player->position[1] + 25.0f;
-            player->aabb = Core::CAABB2<float>(
-                Core::Float2(
-                    player->position[0], 
-                    player->position[1]
-                ),
-                Core::Float2(
-                    player->position[0] + player->size[0], 
-                    player->position[1] + player->size[1]
-                )
-            );
+            playerSystem.MovePlayer(Core::Float2(0.0f, 25.0f));
         }
     }
+
+    std::vector<Data::Entity*> System::GetCollidingEntities(Core::CAABB2<float> aabb)
+    {
+		Data::PlayerSystem& playerSystem = Data::PlayerSystem::GetInstance();
+		Data::Entity* player = playerSystem.GetPlayer();
+
+		std::vector<Data::Entity*> entities = Data::EntitySystem::GetInstance().GetAllCollidables();
+		std::vector<Data::Entity*> collidingEntities;
+
+        for (Data::Entity* entity : entities)
+        {
+            if (entity == nullptr)
+            {
+                continue;
+            }
+
+            if (aabb.Intersects(entity->aabb) == true)
+            {
+                collidingEntities.push_back(entity);
+            }
+        }
+
+        return collidingEntities;
+    }
+
+    void System::HandleCollisions(std::vector<Data::Entity*> collisionEntities, bool& playerMovementIsBlocked)
+    {
+        Data::PlayerSystem& playerSystem = Data::PlayerSystem::GetInstance();
+
+        for (Data::Entity* entity : collisionEntities)
+        {
+            switch (entity->category)
+            {
+                case Data::EntityCategory::Finish:
+                    Data::EventSystem::GetInstance().FireEvent(Data::EventType::FinishedMap);
+                    break;
+
+                case Data::EntityCategory::ShroomMagic:
+                    Data::PlayerSystem::GetInstance().Intoxicate();
+                    Data::EntitySystem::GetInstance().Destroy(*entity);
+                    break;
+
+                case Data::EntityCategory::ShroomToxic:
+                    Data::PlayerSystem::GetInstance().Die();
+                    Data::EntitySystem::GetInstance().Destroy(*entity);
+                    break;
+
+                case Data::EntityCategory::Obstacle:
+                    playerMovementIsBlocked = true;
+                    break;
+            }
+        }
+	}
 
     void System::MovePlayer(Core::Float2 orientation)
     {
@@ -110,12 +158,6 @@ namespace Logic
         float mapEndX = Data::MapSystem::GetInstance().GetMapEnd();
 
         bool orientationXIsPositive = orientation[0] >= 0;
-
-        // set the orientation of the player and draw the sprite accordingly
-        // change the orientation only if it has changed
-        bool looksRight = Core::FloatCompare(0.0f, orientation[0]) == false ? orientationXIsPositive : playerSystem.GetLooksRight();
-        playerSystem.SetLooksRight(looksRight);
-
         // player moves left
         if (player->position[0] <= mapStartX && !orientationXIsPositive)
         {
@@ -128,66 +170,30 @@ namespace Logic
             return;
         }
 
+        // set the orientation of the player and draw the sprite accordingly
+        // change the orientation only if it has changed
+        bool looksRight = Core::FloatCompare(0.0f, orientation[0]) == false ? orientationXIsPositive : playerSystem.GetLooksRight();
+        playerSystem.SetLooksRight(looksRight);
+
         // handle the collision
-        std::vector<Data::Entity*> entities = Data::EntitySystem::GetInstance().GetAllCollidables();
-        std::vector<Data::Entity*> collidingEntities;
-
-        for (Data::Entity* entity : entities)
-        {
-            if (entity == nullptr)
-            {
-				continue;
-			}
-
-            Core::CAABB2<float> movedPlayerAabb = Core::CAABB2<float>(
-				Core::Float2(
-                    player->position[0] + orientation[0] + 1, 
-                    player->position[1] + orientation[1] + 1
-                ),
-				Core::Float2(
-                    player->position[0] + orientation[0] + (player->size[0] - 1), 
-                    player->position[1] + orientation[1] + (player->size[1] - 1)
-                )
-			);
-
-            if (movedPlayerAabb.Intersects(entity->aabb) == true)
-            {
-                if (entity->category == Data::EntityCategory::Finish)
-                {
-                    Data::EventSystem::GetInstance().FireEvent(Data::EventType::FinishedMap);
-				}
-                else if (entity->category == Data::EntityCategory::ShroomMagic)
-                {
-                    playerSystem.Intoxicate();
-
-                    Data::EntitySystem::GetInstance().Destroy(*entity);
-                }
-                else if (entity->category == Data::EntityCategory::ShroomToxic)
-                {
-                    playerSystem.Die();
-
-                    Data::EntitySystem::GetInstance().Destroy(*entity);
-                }
-                else if (entity->category == Data::EntityCategory::Obstacle)
-                {
-                    return;
-                }
-
-                collidingEntities.push_back(entity);
-            }
-		}   
-
-        playerSystem.MovePlayer(orientation[0], orientation[1]);
-        player->aabb = Core::CAABB2<float>(
+        Core::CAABB2<float> movedPlayerAabb = Core::CAABB2<float>(
             Core::Float2(
-                player->position[0] + orientation[0], 
-                player->position[1] + orientation[1]
+                player->position[0] + orientation[0] + 1,
+                player->position[1] + orientation[1] + 1
             ),
             Core::Float2(
-                player->position[0] + orientation[0] + player->size[0],
-                player->position[1] + orientation[1] + player->size[1]
+                player->position[0] + orientation[0] + (player->size[0] - 1),
+                player->position[1] + orientation[1] + (player->size[1] - 1)
             )
         );
+        bool* playerMovementIsBlocked = new bool(false);
+        std::vector<Data::Entity*> collidingEntities = GetCollidingEntities(movedPlayerAabb);
+        HandleCollisions(collidingEntities, *playerMovementIsBlocked);
+
+        if (!*playerMovementIsBlocked)
+        {
+            playerSystem.MovePlayer(orientation);
+        }
     }
 
     bool System::PlayerIsWalkingOnPlattform()

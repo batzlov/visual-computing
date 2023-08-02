@@ -38,7 +38,7 @@ namespace Data
         public:
             void InitPhysics();
             void UpdatePhysics();
-            void MovePlayer(const float directionX, const float directionY);
+            void MovePlayer(Core::Float2 distance);
             float velocityX;
             float velocityY;
             float maxVelocity;
