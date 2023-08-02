@@ -41,4 +41,5 @@ Die Assets stammen von der Plattform [GAME ART 2D](https://www.gameart2d.com/).
 
 ### Bekannte Fehler
 
--   aktuell sind keine Fehler bekannt
+-   Projekt lässt sich aktuell im Release Modus nicht bauen und starten, Fehler: LNK1181 - Eingabedatei "tinyxml2.libkernel32.lib" kann nicht geöffnet werden	
+
