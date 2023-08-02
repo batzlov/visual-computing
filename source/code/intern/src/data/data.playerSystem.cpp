@@ -67,14 +67,17 @@ namespace Data
 
     void PlayerSystem::MovePlayer(const float directionX, const float directionY)
     {
-        // acceleration
-        this->velocityX += directionX * this->acceleration;
+        /*
+            // acceleration
+            this->velocityX += directionX * this->acceleration;
 
-        // limit velocity
-        if (std::abs(this->velocityX) > this->maxVelocity)
-        {
-            this->velocityX = this->maxVelocity * ((this->velocityX < 0.0f) ? -1.0f : 1.0f);
-        }
+            // limit velocity
+            if (std::abs(this->velocityX) > this->maxVelocity)
+            {
+                this->velocityX = this->maxVelocity * ((this->velocityX < 0.0f) ? -1.0f : 1.0f);
+            }
+        */
+        
 
         this->player->position = Core::Float2(
             this->player->position[0] + directionX,

@@ -83,8 +83,14 @@ namespace Logic
         {
             player->position[1] = player->position[1] + 25.0f;
             player->aabb = Core::CAABB2<float>(
-                Core::Float2(player->position[0], player->position[1]),
-                Core::Float2(player->position[0] + 50, player->position[1] + 50)
+                Core::Float2(
+                    player->position[0], 
+                    player->position[1]
+                ),
+                Core::Float2(
+                    player->position[0] + player->size[0], 
+                    player->position[1] + player->size[1]
+                )
             );
         }
     }
@@ -134,8 +140,14 @@ namespace Logic
 			}
 
             Core::CAABB2<float> movedPlayerAabb = Core::CAABB2<float>(
-				Core::Float2(player->position[0] + orientation[0] + 1, player->position[1] + orientation[1] + 1),
-				Core::Float2(player->position[0] + orientation[0] + 49, player->position[1] + orientation[1] + 49)
+				Core::Float2(
+                    player->position[0] + orientation[0] + 1, 
+                    player->position[1] + orientation[1] + 1
+                ),
+				Core::Float2(
+                    player->position[0] + orientation[0] + (player->size[0] - 1), 
+                    player->position[1] + orientation[1] + (player->size[1] - 1)
+                )
 			);
 
             if (movedPlayerAabb.Intersects(entity->aabb) == true)
@@ -167,8 +179,14 @@ namespace Logic
 
         playerSystem.MovePlayer(orientation[0], orientation[1]);
         player->aabb = Core::CAABB2<float>(
-            Core::Float2(player->position[0] + orientation[0], player->position[1] + orientation[1]),
-            Core::Float2(player->position[0] + orientation[0] + 50, player->position[1] + orientation[1] + 50)
+            Core::Float2(
+                player->position[0] + orientation[0], 
+                player->position[1] + orientation[1]
+            ),
+            Core::Float2(
+                player->position[0] + orientation[0] + player->size[0],
+                player->position[1] + orientation[1] + player->size[1]
+            )
         );
     }
 
