@@ -8,7 +8,10 @@ namespace Gui
 {
     void StartupPhase::OnEnter() 
     {
-        Data::EventSystem::GetInstance().Register(Data::EventType::DispatchEventToInput,  &InputSystem::GetInstance().DispatchEventToInput);
+        Data::EventSystem::GetInstance().Register(
+            Data::EventType::DispatchEventToInput,  
+            &InputSystem::GetInstance().DispatchEventToInput
+        );
     }
 
     void StartupPhase::OnRun() {}

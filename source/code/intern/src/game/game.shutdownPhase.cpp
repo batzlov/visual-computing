@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+#include "game.application.h"
+
 #include "data/data.shutdownPhase.h"
 #include "logic/logic.shutdownPhase.h"
 #include "graphics/gfx.shutdownPhase.h"
@@ -35,6 +37,8 @@ namespace Game
         Logic::ShutdownPhase::GetInstance().OnLeave();
         Gfx::ShutdownPhase::GetInstance().OnLeave();
         Gui::ShutdownPhase::GetInstance().OnLeave();
+
+        Application::GetInstance().window.close();
 
         return 0;
     }

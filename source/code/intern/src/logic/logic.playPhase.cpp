@@ -9,7 +9,10 @@ namespace Logic
 {
     void PlayPhase::OnEnter() 
     {
-        Data::EventSystem::GetInstance().Register(Data::EventType::DispatchInputToCommand, &CommandSystem::DispatchInputToLogic);
+        Data::EventSystem::GetInstance().Register(
+            Data::EventType::DispatchInputToCommand, 
+            &CommandSystem::DispatchInputToLogic
+        );
     }
 
     void PlayPhase::OnRun() 
@@ -24,7 +27,10 @@ namespace Logic
 
     void PlayPhase::OnLeave() 
     {
-        Data::EventSystem::GetInstance().Unregister(Data::EventType::DispatchInputToCommand, &CommandSystem::DispatchInputToLogic);
+        Data::EventSystem::GetInstance().Unregister(
+            Data::EventType::DispatchInputToCommand, 
+            &CommandSystem::DispatchInputToLogic
+        );
 
         nextTurnTime = 0.0;
     }

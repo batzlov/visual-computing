@@ -11,6 +11,9 @@ namespace Gui
 
     void ShutdownPhase::OnLeave() 
     {
-        Data::EventSystem::GetInstance().Unregister(Data::EventType::DispatchEventToInput,  &InputSystem::GetInstance().DispatchEventToInput);
+        Data::EventSystem::GetInstance().Unregister(
+            Data::EventType::DispatchEventToInput,  
+            &InputSystem::GetInstance().DispatchEventToInput
+        );
     }
 }

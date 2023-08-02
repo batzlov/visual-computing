@@ -12,6 +12,7 @@
 #include "gui/gui.loadPhase.h"
 
 using namespace tinyxml2;
+
 namespace Game 
 {
     int LoadPhase::InternOnEnter() 
@@ -27,8 +28,7 @@ namespace Game
     int LoadPhase::InternOnRun() 
     {
         XMLDocument* document = new XMLDocument();
-        std::string selectedLevel = std::to_string(Data::LevelSystem::GetInstance().GetSelectedLevel());
-        std::string filePath = Core::Config::levelsDir + "level-" + selectedLevel + ".xml";
+        std::string filePath = Core::Config::levelsDir + Data::LevelSystem::GetInstance().GetSelectedLevelFileName();
         document->LoadFile(filePath.c_str());
 
         Data::LoadPhase::GetInstance().OnRun(*document);

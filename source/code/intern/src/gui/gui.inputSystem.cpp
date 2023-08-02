@@ -74,23 +74,38 @@ namespace Gui
             }
             else if (current.key.code == sf::Keyboard::Key::Space && sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
             {
-                Data::EventSystem::GetInstance().FireEvent(Data::EventType::DispatchInputToCommand, Data::CommandAction::MoveRightAndJump);
+                Data::EventSystem::GetInstance().FireEvent(
+                    Data::EventType::DispatchInputToCommand, 
+                    Data::CommandAction::MoveRightAndJump
+                );
             }
 			else if (current.key.code == sf::Keyboard::Key::Space && sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
 			{
-                Data::EventSystem::GetInstance().FireEvent(Data::EventType::DispatchInputToCommand, Data::CommandAction::MoveLeftAndJump);
+                Data::EventSystem::GetInstance().FireEvent(
+                    Data::EventType::DispatchInputToCommand, 
+                    Data::CommandAction::MoveLeftAndJump
+                );
 			}
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
 			{
-				Data::EventSystem::GetInstance().FireEvent(Data::EventType::DispatchInputToCommand, Data::CommandAction::MoveRight);
+				Data::EventSystem::GetInstance().FireEvent(
+                    Data::EventType::DispatchInputToCommand, 
+                    Data::CommandAction::MoveRight
+                );
 			}
 			else if (current.key.code == sf::Keyboard::Key::Left)
 			{
-				Data::EventSystem::GetInstance().FireEvent(Data::EventType::DispatchInputToCommand, Data::CommandAction::MoveLeft);
+				Data::EventSystem::GetInstance().FireEvent(
+                    Data::EventType::DispatchInputToCommand, 
+                    Data::CommandAction::MoveLeft
+                );
 			}
 			else if (current.key.code == sf::Keyboard::Key::Space)
 			{
-				Data::EventSystem::GetInstance().FireEvent(Data::EventType::DispatchInputToCommand, Data::CommandAction::Jump);
+				Data::EventSystem::GetInstance().FireEvent(
+                    Data::EventType::DispatchInputToCommand, 
+                    Data::CommandAction::Jump
+                );
 			}
 
             RemoveNextInput();

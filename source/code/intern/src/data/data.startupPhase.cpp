@@ -9,7 +9,7 @@ namespace Data
 
     void StartupPhase::OnRun(tinyxml2::XMLDocument& document) 
     {
-        int metaEntityCount = MetaEntitySystem::GetInstance().Initialize(document);
+        MetaEntitySystem::GetInstance().Initialize(document);
     }
     
     void StartupPhase::OnLeave() {}

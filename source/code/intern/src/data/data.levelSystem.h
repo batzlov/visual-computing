@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 namespace Data 
 {
     class LevelSystem
@@ -13,6 +15,9 @@ namespace Data
 
             int GetSelectedLevel() const;
             void SetSelectedLevel(int level);
+
+            std::string GetSelectedLevelAsString();
+            std::string GetSelectedLevelFileName();
 
         private:
             LevelSystem();

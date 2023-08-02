@@ -14,4 +14,14 @@ namespace Data
     {
         selectedLevel = level;
     }
+
+    std::string LevelSystem::GetSelectedLevelAsString() 
+    {
+        return std::to_string(selectedLevel);
+    }
+
+    std::string LevelSystem::GetSelectedLevelFileName() 
+    {
+        return "level-" + GetSelectedLevelAsString() + ".xml";
+    }
 }

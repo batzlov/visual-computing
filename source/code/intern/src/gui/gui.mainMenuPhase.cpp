@@ -42,7 +42,8 @@ namespace Gui
 
     bool MainMenuPhase::IndicateLevelChange()
     {
-        if(indicateLevelChange && this->indicateLevelChangeTimer.getElapsedTime().asSeconds() < indicateLevelChangeDuration)
+        bool indicationDurationPassed = this->indicateLevelChangeTimer.getElapsedTime().asSeconds() > indicateLevelChangeDuration;
+        if(indicateLevelChange && !indicationDurationPassed)
         {
             return true;
         }
