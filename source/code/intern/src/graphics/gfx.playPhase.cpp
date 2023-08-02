@@ -58,20 +58,16 @@ namespace Gfx
             entitySprite.setTexture(*entityTexture);
             entitySprite.setPosition(entity->position[0], entity->position[1]);
 
-            // FIXME: error
-            bool changePlayerDirection = false;
-            if (changePlayerDirection)
+            // handle the view direction of the player
+            if (entity->metaEntity->name == "player" && !playerSystem.GetLooksRight())
             {
-                if (entity->metaEntity->name == "player" && !playerSystem.GetLooksRight())
-                {
-                    entitySprite.setOrigin({ 0, 0 });
-                    entitySprite.setScale(-1, 1);
-                }
-                else if (entity->metaEntity->name == "player" && playerSystem.GetLooksRight())
-                {
-                    entitySprite.setOrigin({ 0, 0 });
-                    entitySprite.setScale(1, 1);
-                }
+                entitySprite.setOrigin({ playerSystem.GetPlayer()->size[0], 0});
+                entitySprite.setScale(-1, 1);
+            }
+            else if (entity->metaEntity->name == "player" && playerSystem.GetLooksRight())
+            {
+                entitySprite.setOrigin({ 0, 0 });
+                entitySprite.setScale(1, 1);
             }
 
             app.window.draw(entitySprite);
@@ -88,12 +84,10 @@ namespace Gfx
                     continue;
                 }
 
-                // FIXME: check if the player distance to the right or left border is less than 100px, then move the view
                 sf::View view = app.window.getView();
                
                 float centerX = entity->position[0] + 250;
                 float centerY = view.getCenter().y;
-                // float centerY = entity->position[1] - 150;
 
                 view.setCenter(centerX, centerY);
 				
