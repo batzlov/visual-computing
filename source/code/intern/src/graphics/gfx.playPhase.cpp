@@ -103,7 +103,12 @@ namespace Gfx
             psychedelicTexture.loadFromFile(filePath.c_str());
             psychedelicTexture.setRepeated(true);
 
-            sf::IntRect overlayBounds(0, 0, 1600, 1600);
+            sf::IntRect overlayBounds(
+                0, 
+                0, 
+                Data::MapSystem::GetInstance().GetWidth(),
+                Data::MapSystem::GetInstance().GetWidth()
+            );
             sf::Sprite psychedelicSprite = sf::Sprite(psychedelicTexture, overlayBounds);
             psychedelicSprite.setPosition(
                 (float)bounds.left,
