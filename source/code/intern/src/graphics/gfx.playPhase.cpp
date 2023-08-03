@@ -41,6 +41,7 @@ namespace Gfx
         app.window.draw(bgSprite);
         
         // get all entities we need to draw
+        // TODO: pair of iterators would be better
         std::vector<Data::Entity*> entities = Data::EntitySystem::GetInstance().GetAll();
         Data::PlayerSystem& playerSystem = Data::PlayerSystem::GetInstance();
         for(auto entity : entities) 
