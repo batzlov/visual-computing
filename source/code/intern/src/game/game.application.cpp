@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cassert>
 #include <unordered_map>
+#include <exception>
 
 #include "game.application.h"
 #include "game.phase.h"
@@ -124,9 +125,32 @@ int main()
 {
     Game::Application& app = Game::Application::GetInstance();
 
-    app.Startup();
-    app.Run();
-    app.Shutdown();
+    try
+    {
+        app.Startup();
+        app.Run();
+    }
+    catch (const std::exception& e)
+    {
+		std::cerr << e.what() << std::endl;
+	}
+    catch (...)
+    {
+		std::cerr << "Unknown exception occured" << std::endl;
+	}
+
+    try
+    {
+        app.Shutdown();
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+    catch (...)
+    {
+        std::cerr << "Unknown exception occured" << std::endl;
+	}
     
     return 0;
 }
