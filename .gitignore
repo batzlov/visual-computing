@@ -33,7 +33,7 @@
 *.out
 *.app
 
-!game.exe
+!game_release.exe
 !game_debug.exe
 
 /.vs
